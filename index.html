@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="kk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>РњРµРєС‚РµРї-Р›РёС†РµР№ - Р‘Р°СЃС‚С‹ Р±РµС‚</title>
+    <title>Мектеп-Лицей - Басты бет</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -40,10 +40,10 @@
             background-color: #004755;
         }
         
-        /* РЎС‚РёР»РёР·Р°С†РёСЏ СЃРєСЂРѕР»Р»Р±Р°СЂР° */
+        /* Стилизация скроллбара */
         ::-webkit-scrollbar {
             width: 8px;
-            height: 8px; /* Р“РѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ СЃРєСЂРѕР»Р» */
+            height: 8px; /* Горизонтальный скролл */
         }
         ::-webkit-scrollbar-track {
             background: #f1f1f1; 
@@ -60,7 +60,7 @@
             border-radius: 10px;
         }
 
-        /* РЎРєСЂС‹РІР°РµРј СЃРєСЂРѕР»Р»Р±Р°СЂ РґР»СЏ РєР°СЂСѓСЃРµР»Рё РІРµС‚РµСЂР°РЅРѕРІ, РЅРѕ РѕСЃС‚Р°РІР»СЏРµРј С„СѓРЅРєС†РёРѕРЅР°Р» */
+        /* Скрываем скроллбар для карусели ветеранов, но оставляем функционал */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -86,7 +86,7 @@
             transform: translateX(5px);
         }
 
-        /* --- РЎРўРР›Р Р”Р›РЇ РЁРђРџРљР --- */
+        /* --- СТИЛИ ДЛЯ ШАПКИ --- */
         .header-transparent {
             background-color: transparent;
             box-shadow: none;
@@ -182,7 +182,7 @@
     </style>
 
     <script>
-        // 1. Р“Р°Р»РµСЂРµСЏ СЃСѓСЂРµС‚С‚РµСЂС–РЅС–ТЈ С‚С–Р·С–РјС–
+        // 1. Галерея суреттерінің тізімі
         const galleryImages = [
             "assets/images/gallery/1.jpg", "assets/images/gallery/2.jpg",
             "assets/images/gallery/3.jpg", "assets/images/gallery/4.jpg",
@@ -193,7 +193,7 @@
 
         let currentImageIndex = 0;
 
-        // 2. РЎСѓСЂРµС‚С‚С– ТЇР»РєРµР№С‚С–Рї Р°С€Сѓ
+        // 2. Суретті үлкейтіп ашу
         function openModal(index) {
             const modal = document.getElementById('gallery-modal');
             const modalImage = document.getElementById('modal-image');
@@ -207,7 +207,7 @@
             document.body.style.overflow = 'hidden'; 
         }
 
-        // 3. РњРѕРґР°Р»СЊРґС– С‚РµСЂРµР·РµРЅС– Р¶Р°Р±Сѓ
+        // 3. Модальді терезені жабу
         function closeModal() {
             const modal = document.getElementById('gallery-modal');
             if(!modal) return;
@@ -216,7 +216,7 @@
             document.body.style.overflow = 'auto'; 
         }
 
-        // 4. РўРѕР»С‹Т› РіР°Р»РµСЂРµСЏ С‚РµСЂРµР·РµСЃС–РЅ Р°С€Сѓ/Р¶Р°Р±Сѓ
+        // 4. Толық галерея терезесін ашу/жабу
         function toggleFullGallery(show) {
             const fullModal = document.getElementById('full-gallery-modal');
             if(!fullModal) return;
@@ -229,7 +229,7 @@
             }
         }
 
-        // 5. РЎСѓСЂРµС‚С‚РµСЂРґС– Р°СѓС‹СЃС‚С‹СЂСѓ
+        // 5. Суреттерді ауыстыру
         function changeImage(step) {
             currentImageIndex += step;
             if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
@@ -237,7 +237,7 @@
             document.getElementById('modal-image').src = galleryImages[currentImageIndex];
         }
 
-        // 6. РќР°РІР±Р°СЂРґС‹ СЃРєСЂРѕР»Р» РєРµР·С–РЅРґРµ Р±Р°СЃТ›Р°СЂСѓ
+        // 6. Навбарды скролл кезінде басқару
         window.addEventListener('scroll', () => {
             const header = document.getElementById('main-header');
             if (window.scrollY > 50) {
@@ -249,36 +249,36 @@
             }
         });
 
-        // 7. РњТ±Т“Р°Р»С–РјРґРµСЂ С‚СѓСЂР°Р»С‹ Р°Т›РїР°СЂР°С‚ (Р–РђРЎ РњРђРњРђРќ)
+        // 7. Мұғалімдер туралы ақпарат (ЖАС МАМАН)
         const teachersData = {
             1: {
-                name: "РђР№Т“Р°РЅС‹Рј Р•СЂР¶Р°РЅТ›С‹Р·С‹",
-                subject: "РђТ“С‹Р»С€С‹РЅ С‚С–Р»С– РїУ™РЅС– РјТ±Т“Р°Р»С–РјС–",
-                bio: "2023 Р¶С‹Р»РґР°РЅ Р±Р°СЃС‚Р°Рї РјРµРєС‚РµРїС‚Рµ Р¶Т±РјС‹СЃ С–СЃС‚РµР№РґС–. IELTS 7.5 РёРµРіРµСЂС–. РћТ›СѓС€С‹Р»Р°СЂРґС‹ СЂРµСЃРїСѓР±Р»РёРєР°Р»С‹Т› РѕР»РёРјРїРёР°РґР°Р»Р°СЂТ“Р° РґР°Р№С‹РЅРґР°Р№РґС‹. Р–Р°ТЈР°С€С‹Р» У™РґС–СЃ-С‚У™СЃС–Р»РґРµСЂРґС– Т›РѕР»РґР°РЅР°РґС‹.",
+                name: "Айғаным Ержанқызы",
+                subject: "Ағылшын тілі пәні мұғалімі",
+                bio: "2023 жылдан бастап мектепте жұмыс істейді. IELTS 7.5 иегері. Оқушыларды республикалық олимпиадаларға дайындайды. Жаңашыл әдіс-тәсілдерді қолданады.",
                 img: "https://placehold.co/400x500/004755/FFFFFF?text=Teacher+1"
             },
             2: {
-                name: "Р‘РµРєР·Р°С‚ РќТ±СЂР»Р°РЅТ±Р»С‹",
-                subject: "РњР°С‚РµРјР°С‚РёРєР° РїУ™РЅС– РјТ±Т“Р°Р»С–РјС–",
-                bio: "Р–Р°СЃ РјР°РјР°РЅ, С†РёС„СЂР»С‹Т› С‚РµС…РЅРѕР»РѕРіРёСЏР»Р°СЂРґС‹ СЃР°Р±Р°Т›С‚Р° С‚РёС–РјРґС– Т›РѕР»РґР°РЅР°РґС‹. 'Р РѕР±РѕС‚РѕС‚РµС…РЅРёРєР°' ТЇР№С–СЂРјРµСЃС–РЅС–ТЈ Р¶РµС‚РµРєС€С–СЃС–.",
+                name: "Бекзат Нұрланұлы",
+                subject: "Математика пәні мұғалімі",
+                bio: "Жас маман, цифрлық технологияларды сабақта тиімді қолданады. 'Робототехника' үйірмесінің жетекшісі.",
                 img: "https://placehold.co/400x500/004755/FFFFFF?text=Teacher+2"
             },
             3: {
-                name: "Р“ТЇР»РЅР°Р· РћРјР°СЂТ›С‹Р·С‹",
-                subject: "ТљР°Р·Р°Т› С‚С–Р»С– РјРµРЅ У™РґРµР±РёРµС‚С–",
-                bio: "РЁС‹Т“Р°СЂРјР°С€С‹Р»С‹Т›Т›Р° Р¶Р°Т›С‹РЅ, Р¶Р°СЃ Р°Т›С‹РЅРґР°СЂ РєР»СѓР±С‹РЅС‹ТЈ Р¶РµС‚РµРєС€С–СЃС–. РћР±Р»С‹СЃС‚С‹Т› Р±Р°Р№Т›Р°СѓР»Р°СЂРґС‹ТЈ Р¶ТЇР»РґРµРіРµСЂС–.",
+                name: "Гүлназ Омарқызы",
+                subject: "Қазақ тілі мен әдебиеті",
+                bio: "Шығармашылыққа жақын, жас ақындар клубының жетекшісі. Облыстық байқаулардың жүлдегері.",
                 img: "https://placehold.co/400x500/004755/FFFFFF?text=Teacher+3"
             },
             4: {
-                name: "Р”У™СѓР»РµС‚ РЎРµСЂС–РєТ±Р»С‹",
-                subject: "РўР°СЂРёС… РїУ™РЅС– РјТ±Т“Р°Р»С–РјС–",
-                bio: "РўР°СЂРёС…С‚С‹ РёРЅС‚РµСЂР°РєС‚РёРІС‚С– РєР°СЂС‚Р°Р»Р°СЂ Р°СЂТ›С‹Р»С‹ С‚ТЇСЃС–РЅРґС–СЂРµРґС–. 'Р–Р°СЃ С‚Р°СЂРёС…С€С‹' РєР»СѓР±С‹РЅС‹ТЈ Р¶РµС‚РµРєС€С–СЃС–.",
+                name: "Дәулет Серікұлы",
+                subject: "Тарих пәні мұғалімі",
+                bio: "Тарихты интерактивті карталар арқылы түсіндіреді. 'Жас тарихшы' клубының жетекшісі.",
                 img: "https://placehold.co/400x500/004755/FFFFFF?text=Teacher+4"
             },
             5: {
-                name: "РњУ©Р»РґС–СЂ РђСЃР°РЅТ›С‹Р·С‹",
-                subject: "Р‘Р°СЃС‚Р°СѓС‹С€ СЃС‹РЅС‹Рї РјТ±Т“Р°Р»С–РјС–",
-                bio: "Р‘Р°Р»Р°Р»Р°СЂРјРµРЅ С‚РµР· С‚С–Р» С‚Р°Р±С‹СЃР°РґС‹. РћР№С‹РЅ С‚РµС…РЅРѕР»РѕРіРёСЏСЃС‹РЅ СЃР°Р±Р°Т›С‚Р° РєРµТЈС–РЅРµРЅ Т›РѕР»РґР°РЅР°РґС‹.",
+                name: "Мөлдір Асанқызы",
+                subject: "Бастауыш сынып мұғалімі",
+                bio: "Балалармен тез тіл табысады. Ойын технологиясын сабақта кеңінен қолданады.",
                 img: "https://placehold.co/400x500/004755/FFFFFF?text=Teacher+5"
             }
         };
@@ -318,31 +318,31 @@
                 
                 </div>
                 <div class="flex flex-col logo-text transition-colors duration-300">
-                    <span class="font-serif font-black text-lg uppercase leading-tight tracking-wide">Тљ.РЎУ™С‚Р±Р°РµРІ Р°С‚С‹РЅРґР°Т“С‹</span>
-                    <span class="text-xs font-bold tracking-widest uppercase opacity-90">РњРµРєС‚РµРї-Р»РёС†РµР№</span>
+                    <span class="font-serif font-black text-lg uppercase leading-tight tracking-wide">Қ.Сәтбаев атындағы</span>
+                    <span class="text-xs font-bold tracking-widest uppercase opacity-90">Мектеп-лицей</span>
                 </div>
             </div>
 
             <nav class="hidden lg:flex flex-1 justify-evenly items-center font-serif font-bold text-sm uppercase tracking-wide nav-text transition-colors duration-300">
                 <div class="group relative cursor-pointer py-4">
-                    <span class="nav-link transition flex items-center">РњРµРєС‚РµРї С‚СѓСЂР°Р»С‹ <i class="fas fa-angle-down ml-1 text-xs"></i></span>                        
+                    <span class="nav-link transition flex items-center">Мектеп туралы <i class="fas fa-angle-down ml-1 text-xs"></i></span>                        
                     <div class="absolute top-full left-0 w-56 bg-white shadow-xl border-t-4 border-emerald-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 text-emerald-900 rounded-b-lg">
-                        <a href="#history" class="block px-4 py-3 hover:bg-emerald-50 border-b border-gray-100 transition">РўР°СЂРёС…С‹</a>
-                        <a href="#leadership" class="block px-4 py-3 hover:bg-emerald-50 border-b border-gray-100 transition">Р‘Р°СЃС€С‹Р»С‹Т›</a>
+                        <a href="#history" class="block px-4 py-3 hover:bg-emerald-50 border-b border-gray-100 transition">Тарихы</a>
+                        <a href="#leadership" class="block px-4 py-3 hover:bg-emerald-50 border-b border-gray-100 transition">Басшылық</a>
                     </div>
                 </div>
                 
                 <div class="group relative cursor-pointer py-4">
-                    <a href="billim.html" class="nav-link transition">Р‘С–Р»С–РјРґС– Р¶Р°ТЈР°СЂС‚Сѓ</a>
+                    <a href="billim.html" class="nav-link transition">Білімді жаңарту</a>
                 </div>
                 <div class="group relative cursor-pointer py-4">
-                    <a href="achievements.html" class="nav-link transition">Р–РµС‚С–СЃС‚С–РєС‚РµСЂ РіР°Р»РµСЂРµСЏСЃС‹</a>
+                    <a href="achievements.html" class="nav-link transition">Жетістіктер галереясы</a>
                 </div>
                 <div class="group relative cursor-pointer py-4">
-                    <a href="alumni.html" class="nav-link transition">РўТЇР»РµРєС‚РµСЂ С‚Р°Т›С‚Р°СЃС‹</a>
+                    <a href="alumni.html" class="nav-link transition">Түлектер тақтасы</a>
                 </div>  
                 <div class="group relative cursor-pointer py-4">
-                    <a href="upbringing.html" class="nav-link transition">РўУ™СЂР±РёРµ ТЇРґРµСЂС–СЃС–</a>
+                    <a href="upbringing.html" class="nav-link transition">Тәрбие үдерісі</a>
                 </div> 
             </nav>
 
@@ -357,14 +357,14 @@
         
         <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
            <source src="https://pub-39a28f27a0f9433d82dd113973c76079.r2.dev/assetss/707.mp4" type="video/mp4">
-             Р‘СЂР°СѓР·РµСЂ РІРёРґРµРѕРЅС‹ Т›РѕР»РґР°РјР°Р№РґС‹.
+             Браузер видеоны қолдамайды.
         </video>
         
         <div class="absolute top-0 left-0 w-full h-full bg-emerald-900/20 z-0"></div>
         <div class="container mx-auto px-4 text-center text-white relative z-10 pt-20">
-            <h2 class="text-gold-400 font-bold tracking-[0.3em] text-sm md:text-base mb-4 uppercase animate-pulse">РЎР°РїР°Р»С‹ Р±С–Р»С–Рј вЂ” Р¶Р°СЂТ›С‹РЅ Р±РѕР»Р°С€Р°Т›</h2>
+            <h2 class="text-gold-400 font-bold tracking-[0.3em] text-sm md:text-base mb-4 uppercase animate-pulse">Сапалы білім — жарқын болашақ</h2>
             <h1 class="font-serif font-black text-4xl md:text-6xl lg:text-7xl mb-8 leading-tight shadow-black drop-shadow-lg">
-                Р‘Р†Р›Р†Рњ РњР•Рќ РўУР Р‘РР• <br> РћР Р”РђРЎР«
+                БІЛІМ МЕН ТӘРБИЕ <br> ОРДАСЫ
             </h1>
         </div>
         
@@ -382,32 +382,32 @@
                     <div class="text-gold-500 text-4xl mb-4 group-hover:text-white transition">
                         <i class="fas fa-building-columns"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">УРєС–РјС€С–Р»С–Рє Р¶У™РЅРµ Р±Р°СЃТ›Р°СЂСѓ</h3>
-                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">РњРµРјР»РµРєРµС‚С‚С–Рє Рё РјРµРєС‚РµРї У™РєС–РјС€С–Р»С–РіС–РјРµРЅ Р±Р°Р№Р»Р°РЅС‹СЃ, СЂРµСЃРјРё Т›Т±Р¶Р°С‚С‚Р°СЂ</p>
+                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">Әкімшілік және басқару</h3>
+                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">Мемлекеттік и мектеп әкімшілігімен байланыс, ресми құжаттар</p>
                     <span class="arrow-icon text-emerald-600 text-sm font-bold uppercase tracking-wider flex items-center transition"></span>
                 </a>
                 <a href="education.html" class="trailer-card bg-white p-8 border-r border-gray-100 group">
                     <div class="text-gold-500 text-4xl mb-4 group-hover:text-white transition">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">Р‘С–Р»С–Рј Р±РµСЂСѓ Рё У™РґС–СЃС‚РµРјРµР»С–Рє Р¶Т±РјС‹СЃ</h3>
-                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">РћТ›Сѓ Р±Р°Т“РґР°СЂР»Р°РјР°Р»Р°СЂС‹РЅ ТЇР№Р»РµСЃС‚С–СЂСѓ, РѕР»РёРјРїРёР°РґР°Р»Р°СЂ, Р±С–Р»С–Рј СЃР°РїР°СЃС‹РЅ Р°СЂС‚С‚С‹СЂСѓ</p>
+                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">Білім беру и әдістемелік жұмыс</h3>
+                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">Оқу бағдарламаларын үйлестіру, олимпиадалар, білім сапасын арттыру</p>
                     <span class="arrow-icon text-emerald-600 text-sm font-bold uppercase tracking-wider flex items-center transition"></span>
                 </a>
                 <a href="services.html" class="trailer-card bg-white p-8 border-r border-gray-100 group">
                     <div class="text-gold-500 text-4xl mb-4 group-hover:text-white transition">
                         <i class="fas fa-school"></i> 
                     </div>
-                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">РњРµРєС‚РµРї РёРЅС„СЂР°Т›Т±СЂС‹Р»С‹РјС‹</h3>
-                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">Т’РёРјР°СЂР°С‚, СЃРїРѕСЂС‚ Р°Р»Р°ТЈРґР°СЂС‹, РєС–С‚Р°РїС…Р°РЅР° Рё Р·Р°РјР°РЅР°СѓРё Р¶Р°Р±РґС‹Т›С‚Р°СЂ</p>
+                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">Мектеп инфрақұрылымы</h3>
+                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">Ғимарат, спорт алаңдары, кітапхана и заманауи жабдықтар</p>
                     <span class="arrow-icon text-emerald-600 text-sm font-bold uppercase tracking-wider flex items-center transition"></span>
                 </a>
                 <a href="community.html" class="trailer-card bg-white p-8 group">
                     <div class="text-gold-500 text-4xl mb-4 group-hover:text-white transition">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">ТљРѕТ“Р°РјРґР°СЃС‚С‹Т› Рё СЃРµСЂС–РєС‚РµСЃС‚С–Рє</h3>
-                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">РҐР°Р»С‹Т›Р°СЂР°Р»С‹Т› Рё Р¶РµСЂРіС–Р»С–РєС‚С– Т±Р№С‹РјРґР°СЂРјРµРЅ, Р°С‚Р°-Р°РЅР°Р»Р°СЂРјРµРЅ СЃРµСЂС–РєС‚РµСЃС‚С–Рє</p>
+                    <h3 class="font-serif font-bold text-xl text-emerald-900 mb-2 uppercase">Қоғамдастық и серіктестік</h3>
+                    <p class="text-sm text-gray-500 mb-4 group-hover:text-emerald-100">Халықаралық и жергілікті ұйымдармен, ата-аналармен серіктестік</p>
                     <span class="arrow-icon text-emerald-600 text-sm font-bold uppercase tracking-wider flex items-center transition"></span>
                 </a>
             </div>
@@ -421,10 +421,10 @@
                     <div class="bg-emerald-600 text-white p-2 rounded mr-3">
                         <i class="far fa-bookmark"></i>
                     </div>
-                    <h2 class="font-serif font-bold text-2xl text-emerald-900">Р–РђТўРђР›Р«ТљРўРђР </h2>
+                    <h2 class="font-serif font-bold text-2xl text-emerald-900">ЖАҢАЛЫҚТАР</h2>
                 </div>
                 <a href="#" class="text-emerald-600 font-bold text-sm hover:text-emerald-800 flex items-center">
-                    Р‘РђР Р›Р«Т’Р«Рќ РљУЁР РЈ <i class="fas fa-angle-double-right ml-2"></i>
+                    БАРЛЫҒЫН КӨРУ <i class="fas fa-angle-double-right ml-2"></i>
                 </a>
             </div>
 
@@ -433,7 +433,7 @@
                     <div class="relative h-80 overflow-hidden">
                         <img src="https://placehold.co/800x600/004755/FFFFFF?text=JOB+VACANCY+NEWS" onerror="this.onerror=null;this.src='https://placehold.co/800x600/004755/FFFFFF?text=News+Image';" alt="News" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div class="absolute top-4 left-4 bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded shadow">
-                            01 Р–РµР»С‚РѕТ›СЃР°РЅ
+                            01 Желтоқсан
                         </div>
                     </div>
                     <div class="p-6 relative">
@@ -441,13 +441,13 @@
                             <i class="fas fa-share-alt"></i>
                         </div>
                         <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-snug group-hover:text-emerald-600 transition">
-                            Р‘РћРЎ РџР•Р”РђР“РћР“ Р›РђРЈРђР—Р«РњР«РќРђ РљРћРќРљРЈР РЎР« РўРЈР РђР›Р« РҐРђР‘РђР Р›РђРќР”Р«Р РЈ
+                            БОС ПЕДАГОГ ЛАУАЗЫМЫНА КОНКУРСЫ ТУРАЛЫ ХАБАРЛАНДЫРУ
                         </h3>
                         <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                            В«Р”С–РЅРјТ±С…Р°РјРµРґ ТљРѕРЅР°РµРІ Р°С‚С‹РЅРґР°Т“С‹ Р¶Р°Р»РїС‹ Р±С–Р»С–Рј Р±РµСЂРµС‚С–РЅ РѕСЂС‚Р° РјРµРєС‚РµРї-РіРёРјРЅР°Р·РёСЏСЃС‹В» РљРњРњ вЂ“ СЃС–РЅРґРµ РїРµРґР°РіРѕРіС‚РµСЂРґС– РєРѕРЅРєСѓСЂСЃС‚С‹Т› РЅРµРіС–Р·РґРµ Р¶Т±РјС‹СЃТ›Р° Т›Р°Р±С‹Р»РґР°Сѓ В«РњРµРјР»РµРєРµС‚С‚С–Рє Р±С–Р»С–Рј Р±РµСЂСѓ Т±Р№С‹РјРґР°СЂС‹РЅС‹ТЈ Р±С–СЂС–РЅС€С– Р±Р°СЃС€С‹Р»Р°СЂС‹ РјРµРЅ РїРµРґР°РіРѕРіС‚РµСЂС–РЅ Р»Р°СѓР°Р·С‹РјТ“Р°...
+                            «Дінмұхамед Қонаев атындағы жалпы білім беретін орта мектеп-гимназиясы» КММ – сінде педагогтерді конкурстық негізде жұмысқа қабылдау «Мемлекеттік білім беру ұйымдарының бірінші басшылары мен педагогтерін лауазымға...
                         </p>
                         <span class="inline-block text-emerald-600 font-bold text-sm border-b-2 border-emerald-600 hover:text-emerald-800 hover:border-emerald-800 transition pb-1">
-                            РўРѕР»С‹Т“С‹СЂР°Т› РѕТ›Сѓ
+                            Толығырақ оқу
                         </span>
                     </div>
                 </a>
@@ -460,10 +460,10 @@
                         <div class="w-2/3 p-4 flex flex-col justify-center">
                             <div class="text-xs text-gray-400 mb-1"><i class="far fa-calendar-alt mr-1"></i> 28.11.2025</div>
                             <h4 class="font-serif font-bold text-emerald-900 text-sm leading-snug group-hover:text-emerald-600 transition line-clamp-2">
-                                Р‘РћРЎ РџР•Р”РђР“РћР“ Р›РђРЈРђР—Р«РњР«РќРђ РљРћРќРљРЈР РЎР« РўРЈР РђР›Р« РҐРђР‘РђР Р›РђРќР”Р«Р РЈ
+                                БОС ПЕДАГОГ ЛАУАЗЫМЫНА КОНКУРСЫ ТУРАЛЫ ХАБАРЛАНДЫРУ
                             </h4>
                             <p class="text-gray-500 text-xs mt-1 line-clamp-1">
-                                РџРµРґР°РіРѕРіС‚РµСЂРґС– РєРѕРЅРєСѓСЂСЃС‚С‹Т› РЅРµРіС–Р·РґРµ Р¶Т±РјС‹СЃТ›Р° Т›Р°Р±С‹Р»РґР°Сѓ...
+                                Педагогтерді конкурстық негізде жұмысқа қабылдау...
                             </p>
                         </div>
                     </a>
@@ -474,16 +474,16 @@
                         <div class="w-2/3 p-4 flex flex-col justify-center">
                             <div class="text-xs text-gray-400 mb-1"><i class="far fa-calendar-alt mr-1"></i> 21.11.2025</div>
                             <h4 class="font-serif font-bold text-emerald-900 text-sm leading-snug group-hover:text-emerald-600 transition line-clamp-2">
-                                РћТ›СѓС€С‹Р»Р°СЂРґС‹ТЈ РґРµРЅСЃР°СѓР»С‹Т“С‹РЅ Т›РѕСЂТ“Р°Сѓ вЂ“ Р±С–Р·РґС–ТЈ Р±Р°СЃС‚С‹ РјС–РЅРґРµС‚С–РјС–Р·
+                                Оқушылардың денсаулығын қорғау – біздің басты міндетіміз
                             </h4>
                             <p class="text-gray-500 text-xs mt-1 line-clamp-1">
-                                РњР°СѓСЃС‹РјРґС‹Т› Р°СѓСЂСѓР»Р°СЂРґС‹ТЈ Р±РµР»СЃРµРЅРґС– РєРµР·РµТЈС–РЅРґРµ РјРµРєС‚РµР±С–РјС–Р·РґРµ СЃР°РЅРёС‚Р°СЂР»С‹Т›-РіРёРіРёРµРЅР°Р»С‹Т› С‚Р°Р»Р°РїС‚Р°СЂ РєТЇС€РµР№С‚С–Р»РґС–...
+                                Маусымдық аурулардың белсенді кезеңінде мектебімізде санитарлық-гигиеналық талаптар күшейтілді...
                             </p>
                         </div>
                     </a>
                     <div class="text-center mt-6">
                         <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-800 transition shadow-lg">
-                            <i class="fas fa-th-list mr-3"></i> Р‘Р°СЂР»С‹Т› Р¶Р°ТЈР°Р»С‹Т›С‚Р°СЂ
+                            <i class="fas fa-th-list mr-3"></i> Барлық жаңалықтар
                         </a>
                     </div>
                 </div>
@@ -498,17 +498,17 @@
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase flex items-center justify-center">
-                    <i class="fas fa-award text-gold-500 mr-3"></i> Т®Р—Р”Р†Рљ РњТ°Т’РђР›Р†Рњ
+                    <i class="fas fa-award text-gold-500 mr-3"></i> ҮЗДІК МҰҒАЛІМ
                 </h2>
                 <div class="h-1 w-24 bg-gold-500 mx-auto rounded"></div>
-                <p class="text-emerald-800 mt-4 font-semibold uppercase tracking-wider">ТљР°ТЈС‚Р°СЂ Р°Р№С‹РЅС‹ТЈ ТЇР·РґС–РіС–</p>
+                <p class="text-emerald-800 mt-4 font-semibold uppercase tracking-wider">Қаңтар айының үздігі</p>
             </div>
 
             <div class="flex flex-col md:flex-row items-center justify-center gap-10 max-w-5xl mx-auto bg-white p-8 rounded-3xl shadow-xl border-l-8 border-gold-500">
                 <div class="w-full md:w-1/3 flex justify-center">
                     <div class="relative w-64 h-64 md:w-72 md:h-72">
                         <div class="absolute inset-0 bg-gold-500 rounded-full blur opacity-30 animate-pulse"></div>
-                        <img src="https://placehold.co/400x400/004755/FFFFFF?text=Best+Teacher" alt="Т®Р·РґС–Рє РјТ±Т“Р°Р»С–Рј" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-2xl">
+                        <img src="https://placehold.co/400x400/004755/FFFFFF?text=Best+Teacher" alt="Үздік мұғалім" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-2xl">
                         <div class="absolute bottom-0 right-4 bg-gold-500 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-lg border-2 border-white">
                             <i class="fas fa-star text-lg"></i>
                         </div>
@@ -516,21 +516,21 @@
                 </div>
                 
                 <div class="w-full md:w-2/3 text-center md:text-left">
-                    <h3 class="font-serif font-black text-3xl text-emerald-900 mb-2">РђС…РјРµС‚РѕРІР° РЎР°СѓР»Рµ РљР°СЂРёРјРѕРІРЅР°</h3>
-                    <p class="text-gold-600 font-bold text-lg mb-4 uppercase">РњР°С‚РµРјР°С‚РёРєР° РїУ™РЅС–РЅС–ТЈ РјТ±Т“Р°Р»С–РјС–</p>
+                    <h3 class="font-serif font-black text-3xl text-emerald-900 mb-2">Ахметова Сауле Каримовна</h3>
+                    <p class="text-gold-600 font-bold text-lg mb-4 uppercase">Математика пәнінің мұғалімі</p>
                     
                     <p class="text-gray-600 mb-6 leading-relaxed">
-                        Р‘С–Р»С–Рј Р±РµСЂСѓ СЃР°Р»Р°СЃС‹РЅРґР° 20 Р¶С‹Р»РґС‹Т› С‚У™Р¶С–СЂРёР±РµСЃС– Р±Р°СЂ Р¶РѕТ“Р°СЂС‹ СЃР°РЅР°С‚С‚С‹ Т±СЃС‚Р°Р·. 
-                        РћТ›СѓС€С‹Р»Р°СЂС‹ РѕР±Р»С‹СЃС‚С‹Т› Р¶У™РЅРµ СЂРµСЃРїСѓР±Р»РёРєР°Р»С‹Т› РѕР»РёРјРїРёР°РґР°Р»Р°СЂРґС‹ТЈ Р±С–СЂРЅРµС€Рµ РґТЇСЂРєС–РЅ Р¶РµТЈС–РјРїР°Р·РґР°СЂС‹. 
-                        "РџРµРґР°РіРѕРі-Р·РµСЂС‚С‚РµСѓС€С–" Р±С–Р»С–РєС‚С–Р»С–Рє СЃР°РЅР°С‚С‹РЅС‹ТЈ РёРµРіРµСЂС–.
+                        Білім беру саласында 20 жылдық тәжірибесі бар жоғары санатты ұстаз. 
+                        Оқушылары облыстық және республикалық олимпиадалардың бірнеше дүркін жеңімпаздары. 
+                        "Педагог-зерттеуші" біліктілік санатының иегері.
                     </p>
                     
                     <div class="flex flex-wrap justify-center md:justify-start gap-4">
                         <span class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-bold shadow-sm">
-                            <i class="fas fa-medal mr-2 text-gold-500"></i> "Р«.РђР»С‚С‹РЅСЃР°СЂРёРЅ" С‚У©СЃР±РµР»РіС–СЃС–
+                            <i class="fas fa-medal mr-2 text-gold-500"></i> "Ы.Алтынсарин" төсбелгісі
                         </span>
                         <span class="px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-bold shadow-sm">
-                            <i class="fas fa-chart-line mr-2 text-gold-500"></i> РЎР°РїР°: 100%
+                            <i class="fas fa-chart-line mr-2 text-gold-500"></i> Сапа: 100%
                         </span>
                     </div>
                 </div>
@@ -541,7 +541,7 @@
     <section class="py-16 bg-white relative">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">Р‘Р†Р—Р”Р†Тў INSTAGRAM</h2>
+                <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">БІЗДІҢ INSTAGRAM</h2>
                 <div class="h-1 w-24 bg-gold-500 mx-auto rounded"></div>
             </div>
 
@@ -557,7 +557,7 @@
 
             <div class="text-center mt-8">
                 <a id="instagram-link-button" href="https://www.instagram.com/aya.zhanym12/" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gold-500 hover:bg-gold-400 transition shadow-lg">
-                    <i class="fab fa-instagram mr-3"></i> РўРѕР»С‹Т› Р°РєРєР°СѓРЅС‚С‚С‹ РєУ©СЂСѓ
+                    <i class="fab fa-instagram mr-3"></i> Толық аккаунтты көру
                 </a>
             </div>
         </div>
@@ -567,7 +567,7 @@
         
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
-                <h2 class="font-serif font-black text-3xl text-white mb-2 uppercase">РњР•РљРўР•Рџ УРљР†РњРЁР†Р›Р†Р“Р†</h2>
+                <h2 class="font-serif font-black text-3xl text-white mb-2 uppercase">МЕКТЕП ӘКІМШІЛІГІ</h2>
                 <div class="h-1 w-24 bg-gold-500 mx-auto rounded"></div>
             </div>
 
@@ -575,117 +575,117 @@
 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://pub-39a28f27a0f9433d82dd113973c76079.r2.dev/assets/images/director.jpg" alt="РњРµРєС‚РµРї Р”РёСЂРµРєС‚РѕСЂС‹" class="w-full h-full object-cover">
+                        <img src="https://pub-39a28f27a0f9433d82dd113973c76079.r2.dev/assets/images/director.jpg" alt="Мектеп Директоры" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-emerald-600">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">УР±РµРЅ РўР°Р»Т“Р°С‚ </h3>
-                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">РњРµРєС‚РµРї Р”РёСЂРµРєС‚РѕСЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Әбен Талғат </h3>
+                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">Мектеп Директоры</p>
                         <p class="text-gray-600 text-sm">
-                            Р–Р°Р»РїС‹ Р±С–Р»С–Рј Р±РµСЂСѓ РїСЂРѕС†РµСЃС–РЅ Р±Р°СЃТ›Р°СЂСѓ, СЃС‚СЂР°С‚РµРіРёСЏР»С‹Т› РґР°РјСѓ Р¶РѕСЃРїР°СЂС‹РЅ Р¶ТЇР·РµРіРµ Р°СЃС‹СЂСѓ Р¶У™РЅРµ РјРµРєС‚РµРї РёРјРёРґР¶С–.
+                            Жалпы білім беру процесін басқару, стратегиялық даму жоспарын жүзеге асыру және мектеп имиджі.
                         </p>
                     </div>
                 </div>
                 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://pub-39a28f27a0f9433d82dd113973c76079.r2.dev/assets/images/shynarapai.jpeg" alt="РћТ›Сѓ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹" class="w-full h-full object-cover">
+                        <img src="https://pub-39a28f27a0f9433d82dd113973c76079.r2.dev/assets/images/shynarapai.jpeg" alt="Оқу Ісі Жөніндегі Директор Орынбасары" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-gold-500">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">РђР№РјР°РіР°РјР±РµС‚РѕРІР° РЁС‹РЅР°СЂ Р–РѕР»РґС‹Р±Р°РµРІРЅР°</h3>
-                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">РћТ›Сѓ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Аймагамбетова Шынар Жолдыбаевна</h3>
+                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">Оқу Ісі Жөніндегі Директор Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                            РћТ›Сѓ Р±Р°Т“РґР°СЂР»Р°РјР°Р»Р°СЂС‹РЅ ТЇР№Р»РµСЃС‚С–СЂСѓ, РјТ±Т“Р°Р»С–РјРґРµСЂРґС–ТЈ РєУ™СЃС–Р±Рё РґРµТЈРіРµР№С–РЅ РєУ©С‚РµСЂСѓ Р¶У™РЅРµ СЃР°Р±Р°Т› РєРµСЃС‚РµСЃС–РЅ Т›Т±СЂСѓ.
+                            Оқу бағдарламаларын үйлестіру, мұғалімдердің кәсіби деңгейін көтеру және сабақ кестесін құру.
                         </p>
                     </div>
                 </div>
 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=4.+РўУР Р‘РР•+Р†РЎР†" alt="РўУ™СЂР±РёРµ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=4.+ТӘРБИЕ+ІСІ" alt="Тәрбие Ісі Жөніндегі Директор Орынбасары" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-emerald-600">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Р‘РёСЃРµРЅРѕРІР° Р“ТЇР»Р¶Р°РЅР°С‚</h3>
-                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">РћТ›Сѓ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Бисенова Гүлжанат</h3>
+                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">Оқу Ісі Жөніндегі Директор Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                            Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                            завуч фразасы
                         </p>
                     </div>
                 </div>
                 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/004755/FFFFFF?text=5.+УР”Р†РЎРўР•РњР•" alt="УРґС–СЃС‚РµРјРµР»С–Рє Р–Т±РјС‹СЃ Р–У©РЅС–РЅРґРµРіС– РћСЂС‹РЅР±Р°СЃР°СЂ" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/004755/FFFFFF?text=5.+ӘДІСТЕМЕ" alt="Әдістемелік Жұмыс Жөніндегі Орынбасар" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-gold-500">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">РСЃРјР°РіР°РјР±РµС‚РѕРІР° РђРЅР°СЂ РЈ.</h3>
-                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">РћТ›Сѓ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Исмагамбетова Анар У.</h3>
+                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">Оқу Ісі Жөніндегі Директор Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                            Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                            завуч фразасы
                         </p>
                     </div>
                 </div>
 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=6.+Р‘РђРЎРўРђРЈР«РЁ" alt="Р‘Р°СЃС‚Р°СѓС‹С€ РЎС‹РЅС‹РїС‚Р°СЂ Р–У©РЅС–РЅРґРµРіС– РћСЂС‹РЅР±Р°СЃР°СЂ" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=6.+БАСТАУЫШ" alt="Бастауыш Сыныптар Жөніндегі Орынбасар" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-emerald-600">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">РњР°Р№Р»С‹Т› РњРµР№СЂР»Р°РЅ Рњ,</h3>
-                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">РћТ›Сѓ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Майлық Мейрлан М,</h3>
+                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">Оқу Ісі Жөніндегі Директор Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                           Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                           завуч фразасы
                         </p>
                     </div>
                 </div>
 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/004755/FFFFFF?text=7.+РўУР Р‘РР•РЁР†" alt="РљРµТЈРµСЃ Р±РµСЂСѓ С‚У™СЂР±РёРµС€С–СЃС–" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/004755/FFFFFF?text=7.+ТӘРБИЕШІ" alt="Кеңес беру тәрбиешісі" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-gold-500">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Р“Р°Р±Р±Р°СЃРѕРІР° РђР№РЅСѓСЂ </h3>
-                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">РўУ™СЂР±РёРµ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Габбасова Айнур </h3>
+                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">Тәрбие Ісі Жөніндегі Директор Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                          Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                          завуч фразасы
                         </p>
                     </div>
                 </div>
                 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=8.+РџРЎРРҐРћР›РћР“" alt="РњРµРєС‚РµРї РїСЃРёС…РѕР»РѕРіС‹" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=8.+ПСИХОЛОГ" alt="Мектеп психологы" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-emerald-600">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">РљРѕРЅРёСЃР±Р°РµРІР° РњРµР№СЂР°РјРіСѓР»СЊ</h3>
-                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">РўУ™СЂР±РёРµ Р†СЃС– Р–У©РЅС–РЅРґРµРіС– Р”РёСЂРµРєС‚РѕСЂ РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Конисбаева Мейрамгуль</h3>
+                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">Тәрбие Ісі Жөніндегі Директор Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                            Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                            завуч фразасы
                         </p>
                     </div>
                 </div>
 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/004755/FFFFFF?text=9.+УР›Р•РЈРњР•Рў" alt="УР»РµСѓРјРµС‚С‚С–Рє Т›С‹Р·РјРµС‚РєРµСЂ" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/004755/FFFFFF?text=9.+ӘЛЕУМЕТ" alt="Әлеуметтік қызметкер" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-gold-500">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Р”РѕСЃРјР°Т“Р°РјР±РµС‚РѕРІР° Р“ТЇР»РЅТ±СЂ</h3>
-                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">Р”РёСЂРµРєС‚РѕСЂРґС‹ТЈ Р‘РµР№С–РЅРґС–Рє Р†СЃС– Р–Р°Р№С‹РЅРґР° РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Досмағамбетова Гүлнұр</h3>
+                        <p class="text-gold-500 font-semibold mb-3 uppercase text-sm">Директордың Бейіндік Ісі Жайында Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                            Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                            завуч фразасы
                         </p>
                     </div>
                 </div>
 
                 <div class="leadership-card bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 flex-shrink-0 w-72 sm:w-80">
                     <div class="h-64 overflow-hidden rounded-t-xl">
-                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=10.+РЁРђР РЈРђРЁР«Р›Р«Тљ" alt="РЁР°СЂСѓР°С€С‹Р»С‹Т› РјРµТЈРіРµСЂСѓС€С–СЃС–" class="w-full h-full object-cover">
+                        <img src="https://placehold.co/400x300/007f91/FFFFFF?text=10.+ШАРУАШЫЛЫҚ" alt="Шаруашылық меңгерушісі" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 border-t-4 border-emerald-600">
-                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">УР±РґС–Т›Р°Р»С‹Т›РѕРІР° Р‘Р°СЏРЅ РђРјР°РЅТ“РѕСЃТ›С‹Р·С‹</h3>
-                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">Р”РёСЂРµРєС‚РѕСЂРґС‹ТЈ Р‘РµР№С–РЅРґС–Рє Р†СЃС– Р–Р°Р№С‹РЅРґР° РћСЂС‹РЅР±Р°СЃР°СЂС‹</p>
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-1">Әбдіқалықова Баян Аманғосқызы</h3>
+                        <p class="text-emerald-600 font-semibold mb-3 uppercase text-sm">Директордың Бейіндік Ісі Жайында Орынбасары</p>
                         <p class="text-gray-600 text-sm">
-                           Р·Р°РІСѓС‡ С„СЂР°Р·Р°СЃС‹
+                           завуч фразасы
                         </p>
                     </div>
                 </div>
@@ -699,9 +699,9 @@
     <section class="py-16 bg-gray-50 border-t-4 border-gold-500">
         <div class="container mx-auto px-4">
             <div class="text-center mb-10">
-                <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">Р–РђРЎ РњРђРњРђРќР”РђР  РўРћРџ-5</h2>
+                <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">ЖАС МАМАНДАР ТОП-5</h2>
                 <div class="h-1 w-24 bg-emerald-600 mx-auto rounded"></div>
-                <p class="text-gray-500 mt-2">Р‘РѕР»Р°С€Р°Т“С‹ Р·РѕСЂ Р¶Р°СЃ Т±СЃС‚Р°Р·РґР°СЂ</p>
+                <p class="text-gray-500 mt-2">Болашағы зор жас ұстаздар</p>
             </div>
 
             <div class="flex overflow-x-auto pb-8 space-x-6 admin-scroll px-4">
@@ -714,8 +714,8 @@
                         </div>
                     </div>
                     <div class="p-4 text-center">
-                        <h4 class="font-bold text-lg text-emerald-900">РђР№Т“Р°РЅС‹Рј Р•СЂР¶Р°РЅТ›С‹Р·С‹</h4>
-                        <p class="text-sm text-gold-600 font-semibold">РђТ“С‹Р»С€С‹РЅ С‚С–Р»С–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Айғаным Ержанқызы</h4>
+                        <p class="text-sm text-gold-600 font-semibold">Ағылшын тілі</p>
                     </div>
                 </div>
 
@@ -727,8 +727,8 @@
                         </div>
                     </div>
                     <div class="p-4 text-center">
-                        <h4 class="font-bold text-lg text-emerald-900">Р‘РµРєР·Р°С‚ РќТ±СЂР»Р°РЅТ±Р»С‹</h4>
-                        <p class="text-sm text-gold-600 font-semibold">РњР°С‚РµРјР°С‚РёРєР°</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Бекзат Нұрланұлы</h4>
+                        <p class="text-sm text-gold-600 font-semibold">Математика</p>
                     </div>
                 </div>
 
@@ -740,8 +740,8 @@
                         </div>
                     </div>
                     <div class="p-4 text-center">
-                        <h4 class="font-bold text-lg text-emerald-900">Р“ТЇР»РЅР°Р· РћРјР°СЂТ›С‹Р·С‹</h4>
-                        <p class="text-sm text-gold-600 font-semibold">ТљР°Р·Р°Т› С‚С–Р»С–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Гүлназ Омарқызы</h4>
+                        <p class="text-sm text-gold-600 font-semibold">Қазақ тілі</p>
                     </div>
                 </div>
 
@@ -753,8 +753,8 @@
                         </div>
                     </div>
                     <div class="p-4 text-center">
-                        <h4 class="font-bold text-lg text-emerald-900">Р”У™СѓР»РµС‚ РЎРµСЂС–РєТ±Р»С‹</h4>
-                        <p class="text-sm text-gold-600 font-semibold">РўР°СЂРёС…</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Дәулет Серікұлы</h4>
+                        <p class="text-sm text-gold-600 font-semibold">Тарих</p>
                     </div>
                 </div>
 
@@ -766,8 +766,8 @@
                         </div>
                     </div>
                     <div class="p-4 text-center">
-                        <h4 class="font-bold text-lg text-emerald-900">РњУ©Р»РґС–СЂ РђСЃР°РЅТ›С‹Р·С‹</h4>
-                        <p class="text-sm text-gold-600 font-semibold">Р‘Р°СЃС‚Р°СѓС‹С€ СЃС‹РЅС‹Рї</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Мөлдір Асанқызы</h4>
+                        <p class="text-sm text-gold-600 font-semibold">Бастауыш сынып</p>
                     </div>
                 </div>
 
@@ -778,9 +778,9 @@
     <section class="py-16 bg-white relative">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">РђР Р”РђР“Р•Р  Т°РЎРўРђР—Р”РђР </h2>
+                <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">АРДАГЕР ҰСТАЗДАР</h2>
                 <div class="h-1 w-24 bg-gold-500 mx-auto rounded"></div>
-                <p class="text-gray-500 mt-2">РњРµРєС‚РµРї РјР°Т›С‚Р°РЅС‹С€С‚Р°СЂС‹</p>
+                <p class="text-gray-500 mt-2">Мектеп мақтаныштары</p>
             </div>
 
             <div class="relative group-section max-w-6xl mx-auto px-4">
@@ -793,82 +793,82 @@
                     
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+1" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+1" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РЎС‹Р·РґС‹Т›РѕРІР° Рђ.Рљ.</h4>
-                        <p class="text-sm text-gray-500">ТљР°Р·Р°Т› С‚С–Р»С– РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Сыздықова А.К.</h4>
+                        <p class="text-sm text-gray-500">Қазақ тілі пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+2" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+2" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РРІР°РЅРѕРІР° Р’.Р.</h4>
-                        <p class="text-sm text-gray-500">РњР°С‚РµРјР°С‚РёРєР° РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Иванова В.И.</h4>
+                        <p class="text-sm text-gray-500">Математика пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+3" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+3" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РћСЃРїР°РЅРѕРІ Р‘.РЎ.</h4>
-                        <p class="text-sm text-gray-500">РўР°СЂРёС… РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Оспанов Б.С.</h4>
+                        <p class="text-sm text-gray-500">Тарих пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+4" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+4" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РљРёРј Р•.Рќ.</h4>
-                        <p class="text-sm text-gray-500">РҐРёРјРёСЏ РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Ким Е.Н.</h4>
+                        <p class="text-sm text-gray-500">Химия пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+5" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+5" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РђС…РјРµС‚РѕРІ РЎ.Рњ.</h4>
-                        <p class="text-sm text-gray-500">Р¤РёР·РёРєР° РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Ахметов С.М.</h4>
+                        <p class="text-sm text-gray-500">Физика пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+6" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+6" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РќТ±СЂРїРµР№С–СЃРѕРІР° Р“.Рљ.</h4>
-                        <p class="text-sm text-gray-500">Р‘РёРѕР»РѕРіРёСЏ РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Нұрпейісова Г.К.</h4>
+                        <p class="text-sm text-gray-500">Биология пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+7" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+7" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">РЎР°РґС‹Т›РѕРІ Р .Рђ.</h4>
-                        <p class="text-sm text-gray-500">Р”РµРЅРµ С€С‹РЅС‹Т›С‚С‹СЂСѓ РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Садықов Р.А.</h4>
+                        <p class="text-sm text-gray-500">Дене шынықтыру пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+8" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+8" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">Р•СЃРµРЅРѕРІР° Рњ.Р‘.</h4>
-                        <p class="text-sm text-gray-500">Р‘Р°СЃС‚Р°СѓС‹С€ СЃС‹РЅС‹Рї Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Есенова М.Б.</h4>
+                        <p class="text-sm text-gray-500">Бастауыш сынып ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+9" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+9" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">ТљР°Р»РёРµРІР° Р–.РЎ.</h4>
-                        <p class="text-sm text-gray-500">Р“РµРѕРіСЂР°С„РёСЏ РїУ™РЅС–РЅС–ТЈ Р°СЂРґР°РіРµСЂС–</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Қалиева Ж.С.</h4>
+                        <p class="text-sm text-gray-500">География пәнінің ардагері</p>
                     </div>
 
                     <div class="flex-shrink-0 w-64 text-center group">
                         <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-emerald-100 shadow-lg group-hover:border-gold-500 transition duration-300 mb-4">
-                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+10" alt="РђСЂРґР°РіРµСЂ" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
+                            <img src="https://placehold.co/300x300/e5e7eb/004755?text=Veteran+10" alt="Ардагер" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
                         </div>
-                        <h4 class="font-bold text-lg text-emerald-900">Р‘Р°Р№РјР°Т“Р°РјР±РµС‚РѕРІ Рў.Рў.</h4>
-                        <p class="text-sm text-gray-500">РђР»Т“Р°С€Т›С‹ У™СЃРєРµСЂРё РґР°Р№С‹РЅРґС‹Т›</p>
+                        <h4 class="font-bold text-lg text-emerald-900">Баймағамбетов Т.Т.</h4>
+                        <p class="text-sm text-gray-500">Алғашқы әскери дайындық</p>
                     </div>
 
                 </div>
@@ -884,7 +884,7 @@
     <section id="history" class="py-20 bg-white relative overflow-hidden">
     <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-            <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">РњР•РљРўР•Рџ РўРђР РРҐР«</h2>
+            <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase">МЕКТЕП ТАРИХЫ</h2>
             <div class="h-1 w-24 bg-gold-500 mx-auto rounded"></div>
         </div>
 
@@ -892,7 +892,7 @@
             <div class="relative group">
                 <div class="absolute -inset-4 bg-emerald-100 rounded-xl transform -rotate-2 transition group-hover:rotate-0 duration-500"></div>
                 <div class="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white">
-                    <img src="https://placehold.co/800x600/004755/FFFFFF?text=РњРµРєС‚РµРї+РўР°СЂРёС…С‹" alt="History" class="w-full h-auto object-cover">
+                    <img src="https://placehold.co/800x600/004755/FFFFFF?text=Мектеп+Тарихы" alt="History" class="w-full h-auto object-cover">
                 </div>
             </div>
 
@@ -902,8 +902,8 @@
                         1990
                     </div>
                     <div class="ml-6">
-                        <h4 class="font-serif font-bold text-xl text-emerald-900 mb-1">РђР»Т“Р°С€Т›С‹ Т›Р°РґР°Рј</h4>
-                        <p class="text-gray-600">РњРµРєС‚РµРї У©Р· РµСЃС–РіС–РЅ Р°Р»Т“Р°С€Т›С‹ С€У™РєС–СЂС‚С‚РµСЂС–РЅРµ Р°С€С‚С‹. Р‘С–Р»С–Рј РѕСЂРґР°СЃС‹РЅС‹ТЈ С–СЂРіРµС‚Р°СЃС‹ Т›Р°Р»Р°РЅРґС‹.</p>
+                        <h4 class="font-serif font-bold text-xl text-emerald-900 mb-1">Алғашқы қадам</h4>
+                        <p class="text-gray-600">Мектеп өз есігін алғашқы шәкірттеріне ашты. Білім ордасының іргетасы қаланды.</p>
                     </div>
                 </div>
 
@@ -912,8 +912,8 @@
                         2010
                     </div>
                     <div class="ml-6">
-                        <h4 class="font-serif font-bold text-xl text-emerald-900 mb-1">Р›РёС†РµР№ РјУ™СЂС‚РµР±РµСЃС–</h4>
-                        <p class="text-gray-600">РћТ›Сѓ РѕСЂРЅС‹ Р¶РѕТ“Р°СЂС‹ Р¶РµС‚С–СЃС‚С–РєС‚РµСЂС– ТЇС€С–РЅ СЂРµСЃРјРё С‚ТЇСЂРґРµ "РњРµРєС‚РµРї-Р›РёС†РµР№" РјУ™СЂС‚РµР±РµСЃС–РЅРµ РёРµ Р±РѕР»РґС‹.</p>
+                        <h4 class="font-serif font-bold text-xl text-emerald-900 mb-1">Лицей мәртебесі</h4>
+                        <p class="text-gray-600">Оқу орны жоғары жетістіктері үшін ресми түрде "Мектеп-Лицей" мәртебесіне ие болды.</p>
                     </div>
                 </div>
 
@@ -922,8 +922,8 @@
                         2025
                     </div>
                     <div class="ml-6">
-                        <h4 class="font-serif font-bold text-xl text-emerald-900 mb-1">Р¦РёС„СЂР»С‹Т› Р±РѕР»Р°С€Р°Т›</h4>
-                        <p class="text-gray-600">Р‘ТЇРіС–РЅРґРµ РјРµРєС‚РµРї РµТЈ Р·Р°РјР°РЅР°СѓРё С‚РµС…РЅРѕР»РѕРіРёСЏР»Р°СЂРјРµРЅ Р¶Р°Р±РґС‹Т›С‚Р°Р»Т“Р°РЅ С†РёС„СЂР»С‹Т› Р±С–Р»С–Рј РѕСЂС‚Р°Р»С‹Т“С‹.</p>
+                        <h4 class="font-serif font-bold text-xl text-emerald-900 mb-1">Цифрлық болашақ</h4>
+                        <p class="text-gray-600">Бүгінде мектеп ең заманауи технологиялармен жабдықталған цифрлық білім орталығы.</p>
                     </div>
                 </div>
             </div>
@@ -934,34 +934,34 @@
     <section class="py-16 bg-gray-50 relative border-t border-gray-200">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-            <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase tracking-widest">Р¤РћРўРћР“РђР›Р•Р Р•РЇ</h2>
+            <h2 class="font-serif font-black text-3xl text-emerald-900 mb-2 uppercase tracking-widest">ФОТОГАЛЕРЕЯ</h2>
             <div class="h-1 w-24 bg-gold-500 mx-auto rounded"></div>
         </div>
 
         <div id="photo-gallery" class="grid grid-cols-2 sm:grid-cols-3 gap-4 max-w-5xl mx-auto">
             <div class="gallery-item aspect-square shadow-xl rounded-2xl overflow-hidden border-4 border-white cursor-pointer group" onclick="openModal(0)">
-                <img src="pages/assets/images/gallery/1.jpg" alt="РњРµРєС‚РµРї С‚С‹РЅС‹СЃС‹" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <img src="pages/assets/images/gallery/1.jpg" alt="Мектеп тынысы" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item aspect-square shadow-xl rounded-2xl overflow-hidden border-4 border-white cursor-pointer group" onclick="openModal(1)">
-                <img src="pages/assets/images/gallery/2.jpg" alt="РњРµРєС‚РµРї С‚С‹РЅС‹СЃС‹" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <img src="pages/assets/images/gallery/2.jpg" alt="Мектеп тынысы" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item aspect-square shadow-xl rounded-2xl overflow-hidden border-4 border-white cursor-pointer group" onclick="openModal(2)">
-                <img src="pages/assets/images/gallery/3.jpg" alt="РњРµРєС‚РµРї С‚С‹РЅС‹СЃС‹" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <img src="pages/assets/images/gallery/3.jpg" alt="Мектеп тынысы" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item aspect-square shadow-xl rounded-2xl overflow-hidden border-4 border-white cursor-pointer group" onclick="openModal(3)">
-                <img src="pages/assets/images/gallery/4.jpg" alt="РњРµРєС‚РµРї С‚С‹РЅС‹СЃС‹" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <img src="pages/assets/images/gallery/4.jpg" alt="Мектеп тынысы" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item aspect-square shadow-xl rounded-2xl overflow-hidden border-4 border-white cursor-pointer group" onclick="openModal(4)">
-                <img src="pages/assets/images/gallery/5.jpg" alt="РњРµРєС‚РµРї С‚С‹РЅС‹СЃС‹" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <img src="pages/assets/images/gallery/5.jpg" alt="Мектеп тынысы" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
             </div>
             <div class="gallery-item aspect-square shadow-xl rounded-2xl overflow-hidden border-4 border-white cursor-pointer group" onclick="openModal(5)">
-                <img src="pages/assets/images/gallery/6.jpg" alt="РњРµРєС‚РµРї С‚С‹РЅС‹СЃС‹" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <img src="pages/assets/images/gallery/6.jpg" alt="Мектеп тынысы" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
             </div>
         </div>
 
         <div class="text-center mt-12">
             <button onclick="toggleFullGallery(true)" class="inline-flex items-center justify-center px-10 py-4 bg-emerald-900 text-gold-400 border-2 border-gold-500 font-black rounded-full hover:bg-gold-500 hover:text-emerald-900 transition-all shadow-2xl uppercase tracking-widest text-sm transform hover:scale-105">
-                <i class="fas fa-images mr-3"></i> Р‘РђР Р›Р«Тљ РњТ°Р РђТ’РђРўРўР« РљУЁР РЈ
+                <i class="fas fa-images mr-3"></i> БАРЛЫҚ МҰРАҒАТТЫ КӨРУ
             </button>
         </div>
     </div>
@@ -989,8 +989,8 @@
     <div class="relative bg-white w-full max-w-6xl h-[85vh] rounded-[40px] shadow-2xl overflow-hidden flex flex-col border-4 border-gold-500">
         <div class="p-6 md:p-8 border-b flex justify-between items-center bg-gray-50">
             <div>
-                <h3 class="text-xl md:text-2xl font-serif font-black text-emerald-900 uppercase tracking-widest">РњРµРєС‚РµРїС‚С–ТЈ С‚РѕР»С‹Т› РјТ±СЂР°Т“Р°С‚С‹</h3>
-                <p class="text-[10px] md:text-xs text-gray-500 uppercase mt-1">Р‘Р°СЂР»С‹Т› С–СЃ-С€Р°СЂР°Р»Р°СЂ РјРµРЅ РµСЃС‚РµР»С–РєС‚РµСЂ С‚С–Р·С–РјС–</p>
+                <h3 class="text-xl md:text-2xl font-serif font-black text-emerald-900 uppercase tracking-widest">Мектептің толық мұрағаты</h3>
+                <p class="text-[10px] md:text-xs text-gray-500 uppercase mt-1">Барлық іс-шаралар мен естеліктер тізімі</p>
             </div>
             <button class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-emerald-100 text-emerald-900 rounded-full hover:bg-red-500 hover:text-white transition-all text-2xl" onclick="toggleFullGallery(false)">&times;</button>
         </div>
@@ -1019,10 +1019,10 @@
                         <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-emerald-900 text-xl font-bold">
                             <i class="fas fa-book-reader"></i>
                         </div>
-                        <span class="font-serif font-bold text-lg leading-tight uppercase">РњРµРєС‚РµРї-Р›РёС†РµР№</span>
+                        <span class="font-serif font-bold text-lg leading-tight uppercase">Мектеп-Лицей</span>
                     </div>
                     <p class="text-emerald-100 text-sm mb-6 leading-relaxed">
-                        РЎР°РїР°Р»С‹ Р±С–Р»С–Рј РјРµРЅ СЃР°РЅР°Р»С‹ С‚У™СЂР±РёРµ Р±РµСЂРµС‚С–РЅ Р·Р°РјР°РЅР°СѓРё РѕТ›Сѓ РѕСЂРЅС‹. Р‘С–Р·РґС–ТЈ РјР°Т›СЃР°С‚С‹РјС‹Р· вЂ“ Р±У™СЃРµРєРµРіРµ Т›Р°Р±С–Р»РµС‚С‚С– С‚Т±Р»Т“Р° Т›Р°Р»С‹РїС‚Р°СЃС‚С‹СЂСѓ.
+                        Сапалы білім мен саналы тәрбие беретін заманауи оқу орны. Біздің мақсатымыз – бәсекеге қабілетті тұлға қалыптастыру.
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="w-8 h-8 bg-emerald-800 rounded flex items-center justify-center hover:bg-gold-500 transition"><i class="fab fa-instagram"></i></a>
@@ -1031,20 +1031,20 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg mb-6 border-l-4 border-gold-500 pl-3">РќР°РІРёРіР°С†РёСЏ</h3>
+                    <h3 class="font-bold text-lg mb-6 border-l-4 border-gold-500 pl-3">Навигация</h3>
                     <ul class="space-y-3 text-sm text-emerald-100">
-                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> Р‘Р°СЃС‚С‹ Р±РµС‚</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> РњРµРєС‚РµРї С‚СѓСЂР°Р»С‹</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> РњТ±Т“Р°Р»С–РјРґРµСЂ</a></li>
-                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> Р‘РѕСЃ РѕСЂС‹РЅРґР°СЂ</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> Басты бет</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> Мектеп туралы</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> Мұғалімдер</a></li>
+                        <li><a href="#" class="hover:text-gold-400 transition flex items-center"><i class="fas fa-angle-right mr-2 text-xs"></i> Бос орындар</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg mb-6 border-l-4 border-gold-500 pl-3">Р‘Р°Р№Р»Р°РЅС‹СЃ</h3>
+                    <h3 class="font-bold text-lg mb-6 border-l-4 border-gold-500 pl-3">Байланыс</h3>
                     <ul class="space-y-4 text-sm text-emerald-100">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-gold-500"></i>
-                            <span>РђР»РјР°С‚С‹ Т›Р°Р»Р°СЃС‹,<br>РђР±Р°Р№ РґР°ТЈТ“С‹Р»С‹ 10</span>
+                            <span>Алматы қаласы,<br>Абай даңғылы 10</span>
                         </li>
                         <li class="flex items-center">
                             <i class="fas fa-phone mt-1 mr-3 text-gold-500"></i>
@@ -1057,7 +1057,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg mb-6 border-l-4 border-gold-500 pl-3">РљР°СЂС‚Р°</h3>
+                    <h3 class="font-bold text-lg mb-6 border-l-4 border-gold-500 pl-3">Карта</h3>
                     <div class="bg-emerald-800 w-full h-40 rounded flex items-center justify-center text-emerald-400">
                         <div class="text-center">
                             <i class="fas fa-map-marked-alt text-3xl mb-2"></i>
@@ -1067,14 +1067,14 @@
                 </div>
             </div>
             <div class="border-t border-emerald-800 pt-8 text-center text-sm text-emerald-400 flex flex-col md:flex-row justify-between items-center">
-                <p>&copy; 2025 РњРµРєС‚РµРї-Р›РёС†РµР№. Р‘Р°СЂР»С‹Т› Т›Т±Т›С‹Т›С‚Р°СЂ Т›РѕСЂТ“Р°Р»Т“Р°РЅ.</p>
+                <p>&copy; 2025 Мектеп-Лицей. Барлық құқықтар қорғалған.</p>
                 <p class="mt-2 md:mt-0 text-xs">Designed by Senior Developer</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // РЎРєСЂРёРїС‚ РґР»СЏ С€Р°РїРєРё
+        // Скрипт для шапки
         const header = document.getElementById('main-header');
         
         window.addEventListener('scroll', () => {
@@ -1087,22 +1087,22 @@
             }
         });
 
-        // РЎРљР РРџРў Р”Р›РЇ РЎР›РђР™Р”Р•Р Рђ Р’Р•РўР•Р РђРќРћР’
+        // СКРИПТ ДЛЯ СЛАЙДЕРА ВЕТЕРАНОВ
         const vetContainer = document.getElementById('veterans-scroll');
         const vetPrev = document.getElementById('vet-prev');
         const vetNext = document.getElementById('vet-next');
 
-        // РљРЅРѕРїРєР° Р’РїРµСЂРµРґ
+        // Кнопка Вперед
         vetNext.addEventListener('click', () => {
             vetContainer.scrollBy({ left: 300, behavior: 'smooth' });
         });
 
-        // РљРЅРѕРїРєР° РќР°Р·Р°Рґ
+        // Кнопка Назад
         vetPrev.addEventListener('click', () => {
             vetContainer.scrollBy({ left: -300, behavior: 'smooth' });
         });
 
-        // РџСЂРѕРІРµСЂРєР° СЃРєСЂРѕР»Р»Р° РґР»СЏ РїРѕРєР°Р·Р°/СЃРєСЂС‹С‚РёСЏ РєРЅРѕРїРєРё "РќР°Р·Р°Рґ"
+        // Проверка скролла для показа/скрытия кнопки "Назад"
         vetContainer.addEventListener('scroll', () => {
             if (vetContainer.scrollLeft > 10) {
                 vetPrev.classList.remove('hidden');
