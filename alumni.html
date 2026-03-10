@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Түлектер тақтасы - Мектеп-Лицей</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 50: '#f0fdfa', 100: '#ccfbf1', 600: '#007f91', 800: '#005f6e', 900: '#004755' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    fontFamily: { sans: ['Roboto', 'sans-serif'], serif: ['Merriweather', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #004755; }
+
+        .year-card { transition: all 0.3s ease; }
+        .year-card:hover { transform: translateY(-5px); border-color: #f59e0b; }
+        
+        .honor-card {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box, 
+                        linear-gradient(135deg, #f59e0b, #d97706) border-box;
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.2);
+        }
+
+        .scroll-smooth { scroll-behavior: smooth; }
+
+        /* Жылдар навигациясы */
+        .year-nav::-webkit-scrollbar { height: 4px; }
+        .year-nav::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 10px; }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen scroll-smooth">
+
+    <header class="fixed w-full z-40 top-0 bg-white/95 backdrop-blur shadow-md py-2 border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-4 flex-none group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 border-gold-500 bg-emerald-900 text-white shadow-lg group-hover:bg-gold-500 transition duration-300">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="flex flex-col text-emerald-900 hidden md:flex">
+                        <span class="font-serif font-black text-lg uppercase leading-tight tracking-wide">МЕКТЕП-ЛИЦЕЙ</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex flex-1 justify-evenly items-center font-serif font-bold text-sm uppercase text-emerald-900 space-x-8">
+                    <a href="index.html" class="hover:text-gold-500 transition">Басты бет</a>
+                    <a href="billim.html" class="hover:text-gold-500 transition">Білімді жаңарту</a>
+                    <a href="achievements.html" class="hover:text-gold-500 transition">Жетістіктер</a>
+                    <a href="alumni.html" class="text-gold-500 border-b-2 border-gold-500 pb-1">Түлектер тақтасы</a>
+                    <a href="upbringing.html" class="hover:text-gold-500 transition">Тәрбие үдерісі</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 pt-32 pb-20">
+        
+        <div class="text-center mb-16">
+            <h1 class="font-serif font-black text-3xl md:text-5xl text-emerald-900 uppercase tracking-widest relative inline-block">
+                Мектеп мақтаныштары
+                <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gold-500 rounded"></span>
+            </h1>
+            <p class="text-gray-500 mt-8 max-w-2xl mx-auto italic">Біздің түлектер — біздің абыройымыз. 2015 жылдан бергі жарқын тарихымыз.</p>
+        </div>
+
+        <div class="sticky top-20 z-30 bg-gray-50/80 backdrop-blur-md py-4 mb-12 border-b border-gray-200">
+            <div class="flex overflow-x-auto space-x-4 pb-2 year-nav justify-start md:justify-center">
+                <a href="#year2024" class="px-6 py-2 bg-emerald-900 text-white rounded-full text-sm font-bold hover:bg-gold-500 transition whitespace-nowrap">2024</a>
+                <a href="#year2023" class="px-6 py-2 bg-white border border-emerald-900 text-emerald-900 rounded-full text-sm font-bold hover:bg-emerald-900 hover:text-white transition whitespace-nowrap">2023</a>
+                <a href="#year2022" class="px-6 py-2 bg-white border border-emerald-900 text-emerald-900 rounded-full text-sm font-bold hover:bg-emerald-900 hover:text-white transition whitespace-nowrap">2022</a>
+                <a href="#year2021" class="px-6 py-2 bg-white border border-emerald-900 text-emerald-900 rounded-full text-sm font-bold hover:bg-emerald-900 hover:text-white transition whitespace-nowrap">2021</a>
+                <a href="#year2020" class="px-6 py-2 bg-white border border-emerald-900 text-emerald-900 rounded-full text-sm font-bold hover:bg-emerald-900 hover:text-white transition whitespace-nowrap">2020</a>
+                <a href="#year2015" class="px-6 py-2 bg-white border border-emerald-900 text-emerald-900 rounded-full text-sm font-bold hover:bg-emerald-900 hover:text-white transition whitespace-nowrap">2015-ке дейін</a>
+            </div>
+        </div>
+
+        <section id="year2024" class="mb-24 pt-10">
+            <div class="flex items-center mb-10">
+                <div class="bg-emerald-900 text-gold-500 text-2xl font-black px-6 py-2 rounded-r-full shadow-lg">2024 Түлектері</div>
+                <div class="flex-grow h-px bg-gray-200 ml-4"></div>
+            </div>
+
+            <div class="mb-12">
+                <h3 class="font-serif font-bold text-emerald-800 mb-6 flex items-center">
+                    <i class="fas fa-star text-gold-500 mr-3"></i> Үздік түлектер (Алтын белгі және Үздік аттестат)
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                    <div class="honor-card p-4 rounded-2xl text-center group cursor-pointer" onclick="openLightbox('https://placehold.co/800x1000/004755/FFFFFF?text=Honor+Graduate')">
+                        <div class="w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 relative">
+                            <img src="https://placehold.co/300x400/eee/004755?text=Photo" class="w-full h-full object-cover transition group-hover:scale-105" alt="Түлек">
+                            <div class="absolute top-2 right-2 bg-gold-500 text-white text-[10px] font-bold px-2 py-1 rounded shadow">АЛТЫН БЕЛГІ</div>
+                        </div>
+                        <h4 class="font-bold text-emerald-900 text-sm">Серікбай Дана</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-tighter">Болашақ дәрігер</p>
+                    </div>
+                    <div class="honor-card p-4 rounded-2xl text-center group cursor-pointer" onclick="openLightbox('https://placehold.co/800x1000/004755/FFFFFF?text=Honor+Graduate')">
+                        <div class="w-full aspect-[3/4] rounded-xl overflow-hidden mb-4 relative border border-emerald-100">
+                            <img src="https://placehold.co/300x400/eee/004755?text=Photo" class="w-full h-full object-cover transition group-hover:scale-105" alt="Түлек">
+                            <div class="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded shadow uppercase">Үздік аттестат</div>
+                        </div>
+                        <h4 class="font-bold text-emerald-900 text-sm">Аманжол Әли</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-tighter">IT Маман</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-serif font-bold text-emerald-800 mb-6 flex items-center">
+                    <i class="fas fa-images text-emerald-600 mr-3"></i> Жалпы түлектер фотогалереясы
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="relative h-64 rounded-2xl overflow-hidden shadow-md cursor-pointer group" onclick="openLightbox('https://placehold.co/1200x800/004755/FFFFFF?text=Class+Photo+2024')">
+                        <img src="https://placehold.co/800x500/004755/FFFFFF?text=Class+of+2024" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                            <i class="fas fa-search-plus text-white text-3xl"></i>
+                        </div>
+                    </div>
+                    <div class="relative h-64 rounded-2xl overflow-hidden shadow-md cursor-pointer group" onclick="openLightbox('https://placehold.co/1200x800/005f6e/FFFFFF?text=Group+Photo+2024')">
+                        <img src="https://placehold.co/800x500/005f6e/FFFFFF?text=Graduation+Night" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="year2023" class="mb-24 pt-10">
+            <div class="flex items-center mb-10">
+                <div class="bg-gray-200 text-emerald-900 text-2xl font-black px-6 py-2 rounded-r-full">2023 Түлектері</div>
+                <div class="flex-grow h-px bg-gray-200 ml-4"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6 mb-8 italic text-gray-400 text-sm text-center">
+                [ Мұнда 2023 жылғы үздіктер суреті орналасады ]
+            </div>
+            <div class="bg-white p-8 rounded-3xl border border-dashed border-gray-300 text-center text-gray-400">
+                 2023 жылғы жалпы суреттер мұрағаты
+            </div>
+        </section>
+
+        <section id="year2015" class="mb-24 pt-10 text-center">
+            <div class="flex items-center mb-10">
+                <div class="bg-gold-500 text-white text-2xl font-black px-6 py-2 rounded-r-full">2015 Жыл</div>
+                <div class="flex-grow h-px bg-gray-200 ml-4"></div>
+            </div>
+            <p class="text-gray-400">Тарихымыздың басынан бастап барлық түлектердің деректері мұрағатта сақтаулы.</p>
+        </section>
+
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-12 pb-8 border-t-4 border-gold-500 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+             <p class="text-emerald-100 text-sm font-medium uppercase tracking-widest">&copy; 2025 Мектеп-Лицей. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 hidden p-4" onclick="closeLightbox()">
+        <button class="absolute top-5 right-5 text-white text-5xl hover:text-gold-500 transition duration-300">&times;</button>
+        <img id="lightbox-img" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-4 border-white animate-in zoom-in duration-300">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Клавиш арқылы жабу
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+</body>
+</html>

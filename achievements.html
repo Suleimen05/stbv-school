@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жетістіктер галереясы - Мектеп-Лицей</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 50: '#f0fdfa', 100: '#ccfbf1', 600: '#007f91', 800: '#005f6e', 900: '#004755' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    fontFamily: { sans: ['Roboto', 'sans-serif'], serif: ['Merriweather', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #004755; }
+
+        .achievement-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .achievement-card:hover { transform: translateY(-10px); }
+        
+        .gold-gradient { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        
+        /* Суреттің бетіндегі мәтін эффектісі */
+        .overlay-gradient {
+            background: linear-gradient(to top, rgba(0,71,85,0.9) 0%, rgba(0,71,85,0.4) 50%, transparent 100%);
+        }
+
+        #lightbox { transition: opacity 0.3s ease; }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen">
+
+    <body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen">
+
+   <header class="fixed w-full z-40 top-0 bg-white/95 backdrop-blur shadow-md py-2 border-b border-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-4 flex-none group">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 border-gold-500 bg-emerald-900 text-white shadow-lg group-hover:bg-gold-500 transition duration-300">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+                <div class="flex flex-col text-emerald-900 hidden md:flex">
+                    <span class="font-serif font-black text-lg uppercase leading-tight tracking-wide">МЕКТЕП-ЛИЦЕЙ</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex flex-1 justify-evenly items-center font-serif font-bold text-sm uppercase tracking-wide nav-text transition-colors duration-300">
+    
+    <div class="group relative cursor-pointer py-4">
+        <a href="billim.html" class="nav-link transition">Білімді жаңарту</a>
+    </div>
+
+    <div class="group relative cursor-pointer py-4">
+        <a href="achievements.html" class="nav-link transition text-gold-500 font-black">Жетістіктер галереясы</a>
+    </div>
+
+    <div class="group relative cursor-pointer py-4">
+        <a href="alumni.html" class="nav-link transition">Түлектер тақтасы</a>
+    </div>  
+
+    <div class="group relative cursor-pointer py-4">
+        <a href="upbringing.html" class="nav-link transition">Тәрбие үдерісі</a>
+    </div> 
+
+</nav>
+        </div>
+    </div>
+</header>
+
+    <main class="flex-grow container mx-auto px-4 pt-32 pb-20">
+        
+        <div class="text-center mb-20">
+            <h1 class="font-serif font-black text-3xl md:text-5xl text-emerald-900 uppercase tracking-[0.2em] relative inline-block">
+                Жетістіктер галереясы
+                <span class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-32 h-1.5 gold-gradient rounded-full"></span>
+            </h1>
+        </div>
+
+        <section class="mb-24">
+            <div class="flex items-center mb-10 border-l-8 border-gold-500 pl-6">
+                <h2 class="font-serif font-black text-2xl md:text-3xl text-emerald-900 uppercase">Мектеп жетістіктері</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="achievement-card relative group rounded-3xl overflow-hidden shadow-2xl h-[450px] cursor-pointer" onclick="openLightbox('https://placehold.co/1200x800/004755/FFFFFF?text=Үздік+Мектеп+2024')">
+                    <img src="https://placehold.co/800x600/004755/FFFFFF?text=School+Achievement+1" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Жетістік 1">
+                    <div class="absolute inset-0 overlay-gradient flex flex-col justify-end p-10 text-white">
+                        <div class="bg-gold-500 w-16 h-1 rounded mb-4"></div>
+                        <h3 class="font-serif font-bold text-2xl md:text-3xl mb-2">"Жылдың үздік мектебі" гранты</h3>
+                        <p class="text-emerald-50 opacity-90">Мектеп білім беру сапасын арттырудағы жетістіктері үшін облыс әкімінің арнайы грантына ие болды.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="achievement-card bg-white p-2 rounded-2xl shadow-md border border-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/800x1200/005f6e/FFFFFF?text=Diploma+1')">
+                        <div class="h-64 rounded-xl overflow-hidden">
+                            <img src="https://placehold.co/400x500/005f6e/FFFFFF?text=Diploma+Image" class="w-full h-full object-cover" alt="Диплом">
+                        </div>
+                        <div class="p-4 text-center">
+                            <p class="font-bold text-emerald-900 uppercase text-xs tracking-widest">Инновациялық мектеп</p>
+                            <p class="text-gray-500 text-[10px]">Республикалық сертификат</p>
+                        </div>
+                    </div>
+                    <div class="achievement-card bg-white p-2 rounded-2xl shadow-md border border-gray-100 cursor-pointer" onclick="openLightbox('https://placehold.co/800x1200/007f91/FFFFFF?text=Diploma+2')">
+                        <div class="h-64 rounded-xl overflow-hidden">
+                            <img src="https://placehold.co/400x500/007f91/FFFFFF?text=Cup+Image" class="w-full h-full object-cover" alt="Кубок">
+                        </div>
+                        <div class="p-4 text-center">
+                            <p class="font-bold text-emerald-900 uppercase text-xs tracking-widest">Цифрлық сауаттылық</p>
+                            <p class="text-gray-500 text-[10px]">I-дәрежелі Диплом</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-24 py-16 bg-emerald-900 -mx-4 px-4 rounded-[40px]">
+            <div class="container mx-auto">
+                <div class="flex items-center mb-12 border-l-8 border-gold-400 pl-6">
+                    <h2 class="font-serif font-black text-2xl md:text-3xl text-white uppercase tracking-wider">Мұғалім жетістіктері</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="achievement-card bg-white/10 backdrop-blur border border-white/20 p-8 rounded-3xl text-white group hover:bg-white transition duration-500">
+                        <div class="flex items-center space-x-6 mb-6">
+                            <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-gold-500 flex-none">
+                                <img src="https://placehold.co/200x200/eee/333?text=Photo" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg group-hover:text-emerald-900">Берік Нұрлан</h4>
+                                <p class="text-gold-400 text-xs font-bold">Тарих пәні мұғалімі</p>
+                            </div>
+                        </div>
+                        <p class="text-emerald-100 text-sm italic group-hover:text-gray-600 mb-6">"Республикалық үздік авторлық бағдарлама" байқауының жеңімпазы.</p>
+                        <div class="h-12 w-full gold-gradient rounded-xl flex items-center justify-center font-black text-xs uppercase tracking-tighter shadow-lg cursor-pointer" onclick="openLightbox('https://placehold.co/800x1200/f59e0b/FFFFFF?text=Teacher+Diploma')">
+                            Сертификатты көру
+                        </div>
+                    </div>
+
+                    <div class="achievement-card bg-white/10 backdrop-blur border border-white/20 p-8 rounded-3xl text-white group hover:bg-white transition duration-500">
+                        <div class="flex items-center space-x-6 mb-6">
+                            <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-gold-500 flex-none">
+                                <img src="https://placehold.co/200x200/eee/333?text=Photo" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg group-hover:text-emerald-900">Әлиева Гүлнар</h4>
+                                <p class="text-gold-400 text-xs font-bold">Биология пәні мұғалімі</p>
+                            </div>
+                        </div>
+                        <p class="text-emerald-100 text-sm italic group-hover:text-gray-600 mb-6">"Ыбырай Алтынсарин" төсбелгісінің иегері, 2024 жыл.</p>
+                        <div class="h-12 w-full gold-gradient rounded-xl flex items-center justify-center font-black text-xs uppercase tracking-tighter shadow-lg cursor-pointer" onclick="openLightbox('https://placehold.co/800x1200/f59e0b/FFFFFF?text=Gold+Medal')">
+                            Марапатты көру
+                        </div>
+                    </div>
+
+                    <div class="achievement-card bg-white/10 backdrop-blur border border-white/20 p-8 rounded-3xl text-white group hover:bg-white transition duration-500">
+                        <div class="flex items-center space-x-6 mb-6">
+                            <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-gold-500 flex-none">
+                                <img src="https://placehold.co/200x200/eee/333?text=Photo" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg group-hover:text-emerald-900">Әлиева Гүлнар</h4>
+                                <p class="text-gold-400 text-xs font-bold">Биология пәні мұғалімі</p>
+                            </div>
+                        </div>
+                        <p class="text-emerald-100 text-sm italic group-hover:text-gray-600 mb-6">"Ыбырай Алтынсарин" төсбелгісінің иегері, 2024 жыл.</p>
+                        <div class="h-12 w-full gold-gradient rounded-xl flex items-center justify-center font-black text-xs uppercase tracking-tighter shadow-lg cursor-pointer" onclick="openLightbox('https://placehold.co/800x1200/f59e0b/FFFFFF?text=Gold+Medal')">
+                            Марапатты көру
+                        </div>
+                    </div>
+
+                    <div class="achievement-card bg-white/10 backdrop-blur border border-white/20 p-8 rounded-3xl text-white group hover:bg-white transition duration-500">
+                        <div class="flex items-center space-x-6 mb-6">
+                            <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-gold-500 flex-none">
+                                <img src="https://placehold.co/200x200/eee/333?text=Photo" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg group-hover:text-emerald-900">Асқарұлы Жандос</h4>
+                                <p class="text-gold-400 text-xs font-bold">Психолог</p>
+                            </div>
+                        </div>
+                        <p class="text-emerald-100 text-sm italic group-hover:text-gray-600 mb-6">Халықаралық конференцияның ең үздік баяндамашысы.</p>
+                        <div class="h-12 w-full gold-gradient rounded-xl flex items-center justify-center font-black text-xs uppercase tracking-tighter shadow-lg cursor-pointer" onclick="openLightbox('https://placehold.co/800x1200/f59e0b/FFFFFF?text=Achievement')">
+                            Сертификатты көру
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-24">
+            <div class="flex items-center justify-center mb-16 text-center">
+                <div class="h-px w-20 bg-gray-300"></div>
+                <h2 class="font-serif font-black text-2xl md:text-3xl text-emerald-900 uppercase px-6">Оқушылар жетістіктері</h2>
+                <div class="h-px w-20 bg-gray-300"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="achievement-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 group cursor-pointer" onclick="openLightbox('https://placehold.co/800x1000/eee/004755?text=Winner+1')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://placehold.co/400x600/eee/004755?text=Student+Winner" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 gold-gradient text-white w-10 h-10 rounded-full flex items-center justify-center font-black shadow-lg">1</div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold text-emerald-900 text-sm">Арманұлы Диас</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Математика олимпиадасы</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 group cursor-pointer" onclick="openLightbox('https://placehold.co/800x1000/eee/004755?text=Winner+2')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://placehold.co/400x600/eee/004755?text=Sport+Achievement" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 gold-gradient text-white w-10 h-10 rounded-full flex items-center justify-center font-black shadow-lg">I</div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold text-emerald-900 text-sm">Саматқызы Аяулым</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Көркем гимнастика</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 group cursor-pointer" onclick="openLightbox('https://placehold.co/800x1000/eee/004755?text=Winner+3')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://placehold.co/400x600/eee/004755?text=Debate+Achievement" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 gold-gradient text-white w-10 h-10 rounded-full flex items-center justify-center font-black shadow-lg">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold text-emerald-900 text-sm">Мұрат Серік</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Дебат жеңімпазы</p>
+                    </div>
+                </div>
+
+                <div class="achievement-card bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 group cursor-pointer" onclick="openLightbox('https://placehold.co/800x1000/eee/004755?text=Winner+4')">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://placehold.co/400x600/eee/004755?text=Science+Achievement" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-3 right-3 gold-gradient text-white w-10 h-10 rounded-full flex items-center justify-center font-black shadow-lg">II</div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <h4 class="font-bold text-emerald-900 text-sm">Ержанұлы Әли</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Ғылыми жобалар</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-12 pb-8 border-t-4 border-gold-500">
+        <div class="container mx-auto px-4 text-center">
+             <p class="text-emerald-100 text-sm font-medium uppercase tracking-widest">&copy; 2025 Мектеп-Лицей. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-emerald-900/95 hidden p-4" onclick="closeLightbox()">
+        <button class="absolute top-5 right-5 text-white text-5xl hover:text-gold-500 transition duration-300">&times;</button>
+        <img id="lightbox-img" src="" class="max-w-full max-h-[90vh] rounded-lg shadow-2xl border-4 border-white animate-in zoom-in duration-300">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC клавишін басқанда жабу
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
+
+</body>
+</html>

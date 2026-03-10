@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Әкімшілік бөлім - Мектеп-Лицей</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 600: '#007f91', 800: '#005f6e', 900: '#004755' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b' }
+                    },
+                    fontFamily: { sans: ['Roboto', 'sans-serif'], serif: ['Merriweather', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #004755; }
+        
+        /* Убираем стандартный треугольник details */
+        summary::-webkit-details-marker { display: none; }
+        
+        /* Анимация поворота стрелки */
+        details[open] summary .arrow-icon { transform: rotate(180deg); }
+        
+        /* Анимация появления контента */
+        details[open] div { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen">
+
+    <header class="fixed w-full z-40 top-0 bg-white/95 backdrop-blur shadow-md py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-4 flex-none">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 border-gold-500 bg-emerald-900 text-white shadow-lg">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="flex flex-col text-emerald-900 hidden md:flex">
+                        <span class="font-serif font-black text-lg uppercase leading-tight">МЕКТЕП-ЛИЦЕЙ</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex flex-1 justify-end items-center font-serif font-bold text-sm uppercase text-emerald-900 space-x-8">
+                    <a href="index.html" class="hover:text-gold-500 transition">Басты бет</a>
+                    <a href="admin.html" class="text-gold-500 border-b-2 border-gold-500 pb-1">Әкімшілік</a>
+                    <a href="education.html" class="hover:text-gold-500 transition">Білім беру</a>
+                    <a href="services.html" class="hover:text-gold-500 transition">Инфрақұрылым</a>
+                    <a href="community.html" class="hover:text-gold-500 transition">Қоғамдастық</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 pt-28 pb-16">
+        
+        <div class="text-center mb-12">
+            <h1 class="font-serif font-black text-3xl md:text-4xl text-emerald-900 uppercase tracking-wide">Әкімшілік құжаттар</h1>
+            <div class="h-1 w-32 bg-gold-500 mx-auto rounded mt-4"></div>
+        </div>
+
+        <section class="mb-16">
+            <div class="flex items-center mb-6">
+                <div class="bg-emerald-600 text-white p-2 rounded mr-3 shadow-lg"><i class="fas fa-certificate"></i></div>
+                <h2 class="font-serif font-bold text-2xl text-emerald-900 uppercase">1. Аттестация</h2>
+            </div>
+            
+            <div class="space-y-4"> <details class="bg-white rounded-lg border border-emerald-100 shadow-sm group overflow-hidden">
+                    <summary class="cursor-pointer p-5 flex items-center justify-between hover:bg-emerald-50 transition select-none">
+                        <div class="flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 font-bold text-sm">01</span>
+                            <h3 class="font-bold text-emerald-900 text-lg">Білім алушыны бағалау</h3>
+                            <span class="ml-3 bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full">12 файл</span>
+                        </div>
+                        <i class="fas fa-chevron-down text-gold-500 arrow-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="p-5 bg-gray-50 border-t border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\1.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">4 класс кешенді тестілеу қортындысы</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\2.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">9 класс кешенді тестілеу қортындысы</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\3.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">13-қосымша</span>
+                        </a>
+                         <a href="doc\admin\аттестация\білім алушыны бағалау\4.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2021-2022 оқу жылы 9,11 класс хаттамалары</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\5.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2022-2023 жж. Ерекше білімді қажет ететін оқушылардың тізімі</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\6.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2022-2023 оқу жылы 9,11 класс хаттамалары</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\7.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2023-2024 жж. Ерекше білімді қажет ететін оқушылардың құжаттары</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\8.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2023-2024 оқу жылы аралық аттестаттау 5-8, 10 класс</span>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\9.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2023-2024 оқу жылы қорытынды аттестаттау 11 класс</span>
+                        </a>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\10.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">2023-2024 оқу жылы қорытынды аттестаттау 9 класс</span>
+                        </a>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\11.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Ерекше білім беру бойынша курстан өткен мұғалімдер сертификаттары</span>
+                        </a>
+                        </a>
+                        <a href="doc\admin\аттестация\білім алушыны бағалау\12.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 hover:shadow-md transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Педагогикалық кеңес хаттамалары 2021-2022 оқу жылы</span>
+                        </a>
+                        
+                        </a>
+                        </div>
+                </details>
+
+                <details class="bg-white rounded-lg border border-emerald-100 shadow-sm group overflow-hidden">
+                    <summary class="cursor-pointer p-5 flex items-center justify-between hover:bg-emerald-50 transition select-none">
+                        <div class="flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 font-bold text-sm">02</span>
+                            <h3 class="font-bold text-emerald-900 text-lg">Қорытынды мен ұсыныстар</h3>
+                        </div>
+                        <i class="fas fa-chevron-down text-gold-500 arrow-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="p-5 bg-gray-50 border-t border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <a href="doc\admin\аттестация\қортындымен ұсыныстар\6.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Білім беру қызметін өзін-өзі бағалауын ұйымдастыру және өткізу туралы бұйрық</span>
+                        </a>
+                        <a href="doc\admin\аттестация\қортындымен ұсыныстар\7.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Білім беру ұйымдарын бағалау өлшем шарттарының 2-қосымшасы</span>
+                        </a>
+                        <a href="doc\admin\аттестация\қортындымен ұсыныстар\8.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Педагогикалық кеңес хаттамалары өткізу, қорытынды</span>
+                        </a>
+                        <a href="doc\admin\аттестация\қортындымен ұсыныстар\9.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Қамқоршылық кеңестің №4 хаттамасы</span>
+                        </a>
+                        <a href="doc\admin\аттестация\қортындымен ұсыныстар\10.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Өзін-өзі бағалау анықтамасы</span>
+                        </a>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded-lg border border-emerald-100 shadow-sm group overflow-hidden">
+                    <summary class="cursor-pointer p-5 flex items-center justify-between hover:bg-emerald-50 transition select-none">
+                        <div class="flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mr-3 font-bold text-sm">03</span>
+                            <h3 class="font-bold text-emerald-900 text-lg">Сауалнама</h3>
+                        </div>
+                        <i class="fas fa-chevron-down text-gold-500 arrow-icon transition-transform duration-300"></i>
+                    </summary>
+                    <div class="p-5 bg-gray-50 border-t border-gray-100 grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <a href="doc\admin\аттестация\сауалнама\11.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">4 класс ата-аналар сауалнама қорытындысы</span>
+                        </a>
+                        <a href="doc\admin\аттестация\сауалнама\12.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">4 класс оқушылар сауалнама қорытындысы</span>
+                        </a>
+
+                         <a href="doc\admin\аттестация\сауалнама\13.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">9 класс ата-аналар сауалнама қорытындысы</span>
+                        </a>
+
+                         <a href="doc\admin\аттестация\сауалнама\14.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">9 класс оқушылар сауалнама қорытындысы</span>
+                        </a>
+
+                         <a href="doc\admin\аттестация\сауалнама\15.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Мұғалімдер сауалнама қорытындысы</span>
+                        </a>
+
+                         <a href="doc\admin\аттестация\сауалнама\16.pdf" class="flex items-center p-3 bg-white rounded border hover:border-emerald-500 transition">
+                            <i class="fas fa-file-pdf text-red-500 text-xl mr-3"></i>
+                            <span class="text-sm font-medium text-gray-700">Сауалнама өтініш хат</span>
+                        </a>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+
+        <section class="mb-16 bg-emerald-50 p-6 md:p-8 rounded-2xl border border-emerald-100">
+            <div class="flex items-center mb-6">
+                <div class="bg-gold-500 text-white p-2 rounded mr-3 shadow-lg"><i class="fas fa-chart-line"></i></div>
+                <h2 class="font-serif font-bold text-2xl text-emerald-900 uppercase">2. Мектеп өзін-өзі бағалау</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="font-bold text-xl text-emerald-900 mb-4 border-b pb-2 border-emerald-100">2022-2023 оқу жылы</h3>
+                    <div class="space-y-2 max-h-60 overflow-y-auto pr-2 custom-scroll">
+                        <a href="doc\admin\мектеп оз-озын багалу\2022-2023\707.pdf" class="block p-2 hover:bg-emerald-50 rounded text-sm text-gray-700 flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 mr-2"></i> 2022-2023 оқу жылы Қаныш Сәтбаев атындағы орта мектеп-лицейі өзін-өзі бағалау
+                        </a>
+                       
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="font-bold text-xl text-emerald-900 mb-4 border-b pb-2 border-emerald-100">2024-2025 оқу жылы</h3>
+                    <div class="space-y-2 max-h-60 overflow-y-auto pr-2 custom-scroll">
+                        <a href="doc\admin\мектеп оз-озын багалу\2024-2025\701.pdf" class="block p-2 hover:bg-emerald-50 rounded text-sm text-gray-700 flex items-center">
+                            <i class="fas fa-file-pdf text-red-500 mr-2"></i> Жартыжылдық есеп.pdf
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-16">
+            <div class="flex items-center mb-6">
+                <div class="bg-emerald-600 text-white p-2 rounded mr-3 shadow-lg"><i class="fas fa-landmark"></i></div>
+                <h2 class="font-serif font-bold text-2xl text-emerald-900 uppercase">3. Мемлекеттік қызметтер</h2>
+            </div>
+
+            <div class="space-y-3">
+                
+                <details class="bg-white rounded border border-gray-200 shadow-sm group">
+                    <summary class="cursor-pointer p-4 flex items-center justify-between font-medium text-gray-800 hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 font-bold">01.</span>
+                            <span>Мектепке құжаттар қабылдау және оқуға қабылдау</span>
+                        </div>
+                        <i class="fas fa-plus text-emerald-400 group-open:hidden"></i>
+                        <i class="fas fa-minus text-gold-500 hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 bg-gray-50 border-t space-y-2 pl-10">
+                        <a href="doc\admin\мемлекеттік көрсетілетін қызметтер\мектепке құжат қабылдау және оқуға қабылдау\1.pdf" class="flex items-center text-sm text-gray-600 hover:text-emerald-700"><i class="fas fa-file-pdf text-red-500 mr-2"></i>  Қабылдау 1 сынып</a>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded border border-gray-200 shadow-sm group">
+                    <summary class="cursor-pointer p-4 flex items-center justify-between font-medium text-gray-800 hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 font-bold">02.</span>
+                            <span>Бастауыш, негізгі орта, жалпы орта білім беру ұйымдары арасында балаларды ауыстыру</span>
+                        </div>
+                        <i class="fas fa-plus text-emerald-400 group-open:hidden"></i>
+                        <i class="fas fa-minus text-gold-500 hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 bg-gray-50 border-t space-y-2 pl-10">
+                        <a href="doc\admin\мемлекеттік көрсетілетін қызметтер\бастауыш,орта,жалпы білім беру ұйымдары арасында балаларды ауыстыру\2.pdf" class="flex items-center text-sm text-gray-600 hover:text-emerald-700"><i class="fas fa-file-pdf text-red-500 mr-2"></i>Балаларды ауыстыру </a>
+                    </div>
+                </details>
+
+                <details class="bg-white rounded border border-gray-200 shadow-sm group">
+                    <summary class="cursor-pointer p-4 flex items-center justify-between font-medium text-gray-800 hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 font-bold">03.</span>
+                            <span>Лагерьлерде демалуы үшін құжаттар қабылдау</span>
+                        </div>
+                        <i class="fas fa-plus text-emerald-400 group-open:hidden"></i>
+                        <i class="fas fa-minus text-gold-500 hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 bg-gray-50 border-t space-y-2 pl-10">
+                        <a href="doc\admin\мемлекеттік көрсетілетін қызметтер\қала сыртындығы және мектеп жанындағы лагерьлерге жолдама\3.pdf" class="flex items-center text-sm text-gray-600 hover:text-emerald-700"><i class="fas fa-file-pdf text-red-500 mr-2"></i> Лагерьге құжат қабылдаулагерьге құжат қабылдау </a>
+                    </div>
+                </details>
+
+                 <details class="bg-white rounded border border-gray-200 shadow-sm group">
+                    <summary class="cursor-pointer p-4 flex items-center justify-between font-medium text-gray-800 hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 font-bold">04.</span>
+                            <span>Тегін және жеңілдетілген тамақтандыруды ұсыну</span>
+                        </div>
+                        <i class="fas fa-plus text-emerald-400 group-open:hidden"></i>
+                        <i class="fas fa-minus text-gold-500 hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 bg-gray-50 border-t space-y-2 pl-10">
+                        <a href="doc\admin\мемлекеттік көрсетілетін қызметтер\жалпы білім беретін мектептердегі білім алушылар мен тәрбиеленушілердің жекеленген санаттарына тегін тамақ ұсыну\4.pdf" class="flex items-center text-sm text-gray-600 hover:text-emerald-700"><i class="fas fa-file-pdf text-red-500 mr-2"></i> Тегін тамақтандыру </a>
+                    </div>
+                </details>
+
+                 <details class="bg-white rounded border border-gray-200 shadow-sm group">
+                    <summary class="cursor-pointer p-4 flex items-center justify-between font-medium text-gray-800 hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 font-bold">05.</span>
+                            <span>Білім беру туралы құжаттардың телнұсқаларын беру</span>
+                        </div>
+                        <i class="fas fa-plus text-emerald-400 group-open:hidden"></i>
+                        <i class="fas fa-minus text-gold-500 hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 bg-gray-50 border-t space-y-2 pl-10">
+                        <a href="doc\admin\мемлекеттік көрсетілетін қызметтер\негіщгі,орта,жалпы білім беру құжаттардың төлнұсқасын беру\5.pdf" class="flex items-center text-sm text-gray-600 hover:text-emerald-700"><i class="fas fa-file-pdf text-red-500 mr-2"></i> Телнұсқа беру</a>
+                    </div>
+                </details>
+
+                 <details class="bg-white rounded border border-gray-200 shadow-sm group">
+                    <summary class="cursor-pointer p-4 flex items-center justify-between font-medium text-gray-800 hover:bg-gray-50 transition">
+                        <div class="flex items-center gap-3">
+                            <span class="text-emerald-600 font-bold">06.</span>
+                            <span>Денсаулығына байланысты үйде жеке оқыту</span>
+                        </div>
+                        <i class="fas fa-plus text-emerald-400 group-open:hidden"></i>
+                        <i class="fas fa-minus text-gold-500 hidden group-open:block"></i>
+                    </summary>
+                    <div class="p-4 bg-gray-50 border-t space-y-2 pl-10">
+                        <a href="doc\admin\мемлекеттік көрсетілетін қызметтер\денсаулығына байланысты ұзақ уақыт бойы бара алмайтын балалар\6.pdf" class="flex items-center text-sm text-gray-600 hover:text-emerald-700"><i class="fas fa-file-pdf text-red-500 mr-2"></i>  Үйден жеке тегін оқыту</a>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+
+        <section>
+            <div class="flex items-center mb-6">
+                <div class="bg-emerald-600 text-white p-2 rounded mr-3 shadow-lg"><i class="fas fa-balance-scale"></i></div>
+                <h2 class="font-serif font-bold text-2xl text-emerald-900 uppercase">4. Нормативтік құқықтық база</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                
+                <a href="doc\admin\нормативтік құқықтық база\жарғы.pdf" class="group block bg-white p-4 rounded-lg border border-gray-200 hover:border-emerald-500 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <i class="fas fa-file-word text-blue-500 text-2xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-emerald-700 transition">Жарғы</h4>
+                            <span class="text-xs text-gray-400">Жүктеу (PDF)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="doc\admin\нормативтік құқықтық база\білім туралы заң.docx" class="group block bg-white p-4 rounded-lg border border-gray-200 hover:border-emerald-500 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <i class="fas fa-file-pdf text-red-500 text-2xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-emerald-700 transition">Білім туралы заң</h4>
+                            <span class="text-xs text-gray-400">Жүктеу (DOCX)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="doc\admin\нормативтік құқықтық база\89.docx" class="group block bg-white p-4 rounded-lg border border-gray-200 hover:border-emerald-500 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <i class="fas fa-file-pdf text-red-500 text-2xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-emerald-700 transition">ҚР Тіл туралы</h4>
+                            <span class="text-xs text-gray-400">Жүктеу (DOCX)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="doc\admin\нормативтік құқықтық база\88.docx" class="group block bg-white p-4 rounded-lg border border-gray-200 hover:border-emerald-500 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <i class="fas fa-file-pdf text-red-500 text-2xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-emerald-700 transition">Педагог мәртебесі туралы</h4>
+                            <span class="text-xs text-gray-400">Жүктеу (DOCX)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="doc\admin\нормативтік құқықтық база\86.docx" class="group block bg-white p-4 rounded-lg border border-gray-200 hover:border-emerald-500 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <i class="fas fa-file-pdf text-red-500 text-2xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-emerald-700 transition">ҚР Еңбек кодексі</h4>
+                            <span class="text-xs text-gray-400">Жүктеу (DOCX)</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="doc\admin\нормативтік құқықтық база\20.docx" class="group block bg-white p-4 rounded-lg border border-gray-200 hover:border-emerald-500 hover:shadow-md transition">
+                    <div class="flex items-start">
+                        <i class="fas fa-file-pdf text-red-500 text-2xl mt-1 mr-3"></i>
+                        <div>
+                            <h4 class="font-bold text-gray-800 text-sm group-hover:text-emerald-700 transition">ҚР Конституциясы</h4>
+                            <span class="text-xs text-gray-400">Жүктеу (DOCX)</span>
+                        </div>
+                    </div>
+                </a>
+                
+                </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-10 pb-6 border-t-4 border-gold-500">
+        <div class="container mx-auto px-4 text-center">
+             <p class="text-emerald-100 text-sm">&copy; 2025 Мектеп-Лицей. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

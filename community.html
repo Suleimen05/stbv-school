@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Қоғамдастық және Серіктестік - Мектеп-Лицей</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 50: '#f0fdfa', 100: '#ccfbf1', 600: '#007f91', 800: '#005f6e', 900: '#004755' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b', 600: '#d97706' }
+                    },
+                    fontFamily: { sans: ['Roboto', 'sans-serif'], serif: ['Merriweather', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #004755; }
+        
+        summary::-webkit-details-marker { display: none; }
+        details > summary { list-style: none; }
+        details[open] summary .arrow-icon { transform: rotate(180deg); }
+        details[open] div { animation: fadeIn 0.3s ease-in-out; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Видео адаптивті болу үшін */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        /* Лайтбокс (Суретті үлкейту) */
+        #lightbox { transition: opacity 0.3s ease; }
+        #lightbox.hidden { opacity: 0; pointer-events: none; }
+        #lightbox:not(.hidden) { opacity: 1; pointer-events: auto; }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen">
+
+    <header class="fixed w-full z-40 top-0 bg-white/95 backdrop-blur shadow-md py-2 border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-4 flex-none group">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 border-gold-500 bg-emerald-900 text-white shadow-lg group-hover:bg-gold-500 transition duration-300">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="flex flex-col text-emerald-900 hidden md:flex">
+                        <span class="font-serif font-black text-lg uppercase leading-tight tracking-wide">МЕКТЕП-ЛИЦЕЙ</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex flex-1 justify-end items-center font-serif font-bold text-sm uppercase text-emerald-900 space-x-8">
+                    <a href="index.html" class="hover:text-gold-500 transition">Басты бет</a>
+                    <a href="admin.html" class="hover:text-gold-500 transition">Әкімшілік</a>
+                    <a href="education.html" class="hover:text-gold-500 transition">Білім беру</a>
+                    <a href="services.html" class="hover:text-gold-500 transition">Инфрақұрылым</a>
+                    <a href="community.html" class="text-gold-500 border-b-2 border-gold-500 pb-1">Қоғамдастық</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 pt-32 pb-20">
+        
+        <div class="text-center mb-16">
+            <h1 class="font-serif font-black text-3xl md:text-4xl text-emerald-900 uppercase tracking-widest relative inline-block">
+                Қоғамдастық және Серіктестік
+                <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gold-500 rounded"></span>
+            </h1>
+            <p class="text-gray-500 mt-6 max-w-2xl mx-auto">Мектептің қоғамдық өмірі, қамқоршылық кеңесінің жұмысы және серіктестермен байланыс.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden mb-24">
+            <div class="bg-emerald-900 p-8 text-white relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <h2 class="font-serif font-bold text-2xl md:text-3xl uppercase relative z-10 flex items-center">
+                    <i class="fas fa-users-cog text-gold-500 mr-4"></i> Қамқоршылық кеңес
+                </h2>
+                <p class="text-emerald-100 mt-2 relative z-10 text-sm md:text-base opacity-90">Мектепті басқарудың алқалық органының ресми құжаттары мен есептері</p>
+            </div>
+
+            <div class="p-8 md:p-12 space-y-16">
+
+                <section>
+                    <div class="flex items-center mb-6">
+                        <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mr-4 border border-emerald-200">01</span>
+                        <h3 class="text-xl font-bold text-emerald-900 uppercase tracking-wide">Бұйрықтар</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-700 mb-4 text-sm uppercase">Жүктеуге арналған файлдар</h4>
+                            <div class="space-y-3">
+                                <a href="doc/community/қамқоршылық кеңесі/бұйрықтар/327бқйрыұ13,10,2021.pdf" class="flex items-center p-3 bg-white rounded-lg shadow-sm border hover:border-emerald-500 transition group">
+                                    <div class="bg-red-50 text-red-500 p-2 rounded mr-3 group-hover:bg-red-500 group-hover:text-white transition"><i class="fas fa-file-pdf"></i></div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-gray-800">№327 Бұйрық</span>
+                                        <span class="text-xs text-gray-500">13.10.2021 ж.</span>
+                                    </div>
+                                </a>
+                                <a href="doc/community/қамқоршылық кеңесі/бұйрықтар/369бқйрыұ13,10,2023.pdf" class="flex items-center p-3 bg-white rounded-lg shadow-sm border hover:border-emerald-500 transition group">
+                                    <div class="bg-red-50 text-red-500 p-2 rounded mr-3 group-hover:bg-red-500 group-hover:text-white transition"><i class="fas fa-file-pdf"></i></div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-gray-800">№369 Бұйрық</span>
+                                        <span class="text-xs text-gray-500">13.10.2023 ж.</span>
+                                    </div>
+                                </a>
+                                <a href="doc/community/қамқоршылық кеңесі/бұйрықтар/576бқйрыұ 17,10,2025.pdf" class="flex items-center p-3 bg-white rounded-lg shadow-sm border hover:border-emerald-500 transition group">
+                                    <div class="bg-red-50 text-red-500 p-2 rounded mr-3 group-hover:bg-red-500 group-hover:text-white transition"><i class="fas fa-file-pdf"></i></div>
+                                    <div>
+                                        <span class="block text-sm font-bold text-gray-800">№576 Бұйрық</span>
+                                        <span class="text-xs text-gray-500">17.10.2025 ж.</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="relative group cursor-pointer overflow-hidden rounded-xl shadow border border-gray-200 h-40">
+                                <img src="doc/community/қамқоршылық кеңесі/бұйрықтар/қамқоршылық кеңесін бекіту туралы 05,11,2019/1.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Бұйрық 1" onclick="openLightbox(this.src)">
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="relative group cursor-pointer overflow-hidden rounded-xl shadow border border-gray-200 h-40">
+                                <img src="doc/community/қамқоршылық кеңесі/бұйрықтар/қамқоршылық кеңесін бекіту туралы 05,11,2019/2.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Бұйрық 2" onclick="openLightbox(this.src)">
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="relative group cursor-pointer overflow-hidden rounded-xl shadow border border-gray-200 h-40 col-span-2">
+                                <img src="doc/community/қамқоршылық кеңесі/бұйрықтар/қамқоршылық кеңесін бекіту туралы 05,11,2019/3.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-110" alt="Бұйрық 3" onclick="openLightbox(this.src)">
+                                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                                    <i class="fas fa-search-plus text-white text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-gray-200">
+
+                <section>
+                    <div class="flex items-center mb-6">
+                        <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mr-4 border border-emerald-200">02</span>
+                        <h3 class="text-xl font-bold text-emerald-900 uppercase tracking-wide">Жұмыс жоспарлары</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-5 rounded-xl shadow-md border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-4 text-sm uppercase pl-2 border-l-4 border-gold-500">Мұрағат (Скриншоттар)</h4>
+                            <div class="space-y-4">
+                                <div class="border rounded-lg p-2 bg-gray-50">
+                                    <p class="text-xs font-bold text-gray-500 mb-2 text-center uppercase">2019-2020 Жыл</p>
+                                    <div class="relative group cursor-pointer rounded overflow-hidden h-32">
+                                        <img src="doc/community/қамқоршылық кеңесі/жоспар/19-20/1.png" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" onclick="openLightbox(this.src)">
+                                    </div>
+                                </div>
+                                
+                                <div class="border rounded-lg p-2 bg-gray-50">
+                                    <p class="text-xs font-bold text-gray-500 mb-2 text-center uppercase">2020-2021 Жыл</p>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <img src="doc/community/қамқоршылық кеңесі/жоспар/20-21/1.png" class="w-full h-24 object-cover rounded border cursor-pointer hover:opacity-80" onclick="openLightbox(this.src)">
+                                        <img src="doc/community/қамқоршылық кеңесі/жоспар/20-21/2.png" class="w-full h-24 object-cover rounded border cursor-pointer hover:opacity-80" onclick="openLightbox(this.src)">
+                                        <img src="doc/community/қамқоршылық кеңесі/жоспар/20-21/3.png" class="w-full h-24 object-cover rounded border cursor-pointer hover:opacity-80" onclick="openLightbox(this.src)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-100 h-fit">
+                            <h4 class="font-bold text-emerald-800 mb-4 text-sm uppercase pl-2 border-l-4 border-emerald-500">Жүктеуге арналған файлдар</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <a href="doc/community/қамқоршылық кеңесі/жоспар/21-22.pdf" class="flex items-center justify-center px-4 py-4 bg-white border border-emerald-200 rounded hover:border-emerald-500 hover:text-emerald-700 transition text-sm font-medium shadow-sm hover:shadow-md">
+                                    <i class="fas fa-file-pdf text-red-500 mr-2"></i> 2021-2022 Жоспар
+                                </a>
+                                <a href="doc/community/қамқоршылық кеңесі/жоспар/22-23.pdf" class="flex items-center justify-center px-4 py-4 bg-white border border-emerald-200 rounded hover:border-emerald-500 hover:text-emerald-700 transition text-sm font-medium shadow-sm hover:shadow-md">
+                                    <i class="fas fa-file-pdf text-red-500 mr-2"></i> 2022-2023 Жоспар
+                                </a>
+                                <a href="doc/community/қамқоршылық кеңесі/жоспар/23-24.pdf" class="flex items-center justify-center px-4 py-4 bg-white border border-emerald-200 rounded hover:border-emerald-500 hover:text-emerald-700 transition text-sm font-medium shadow-sm hover:shadow-md">
+                                    <i class="fas fa-file-pdf text-red-500 mr-2"></i> 2023-2024 Жоспар
+                                </a>
+                                <a href="doc/community/қамқоршылық кеңесі/жоспар/24-25.pdf" class="flex items-center justify-center px-4 py-4 bg-white border border-emerald-200 rounded hover:border-emerald-500 hover:text-emerald-700 transition text-sm font-medium shadow-sm hover:shadow-md">
+                                    <i class="fas fa-file-pdf text-red-500 mr-2"></i> 2024-2025 Жоспар
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-gray-200">
+
+                <section>
+                    <div class="flex items-center mb-6">
+                        <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mr-4 border border-emerald-200">03</span>
+                        <h3 class="text-xl font-bold text-emerald-900 uppercase tracking-wide">Кеңес құрамы</h3>
+                    </div>
+                    
+                    <div class="overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider font-bold border-b border-gray-200">
+                                <tr>
+                                    <th class="px-6 py-4 w-12 text-center">№</th>
+                                    <th class="px-6 py-4">Аты-жөні</th>
+                                    <th class="px-6 py-4">Лауазымы / Статусы</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">1</td>
+                                    <td class="px-6 py-4 font-bold text-gray-800">Табылганов Тимур Махамбетович</td>
+                                    <td class="px-6 py-4 text-emerald-700 font-medium"><span class="bg-emerald-100 px-2 py-1 rounded text-xs uppercase">Кеңес төрағасы</span></td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">2</td>
+                                    <td class="px-6 py-4 text-gray-700">Ахажанова Самал Амангелдіқызы</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">3</td>
+                                    <td class="px-6 py-4 text-gray-700">Умбетова Гаухар Губайдоллаевна</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">4</td>
+                                    <td class="px-6 py-4 text-gray-700">Калиев Самат Баймуханович</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">5</td>
+                                    <td class="px-6 py-4 text-gray-700">Бекмагамбетов Октябрь Акылбаевич</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">6</td>
+                                    <td class="px-6 py-4 text-gray-700">Алабаева Лариса Магелланқызы</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">7</td>
+                                    <td class="px-6 py-4 text-gray-700">Табылганов Жандос Махмутович</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="px-6 py-4 text-center font-bold text-emerald-600">8</td>
+                                    <td class="px-6 py-4 text-gray-700">Аймагамбетов Еділ Конаевич</td>
+                                    <td class="px-6 py-4 text-gray-500">Кеңес мүшесі</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <hr class="border-gray-200">
+
+                <section>
+                    <div class="flex items-center mb-6">
+                        <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mr-4 border border-emerald-200">04</span>
+                        <h3 class="text-xl font-bold text-emerald-900 uppercase tracking-wide">Хаттамалар</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <a href="doc/community/қамқоршылық кеңесі/хаттамалар/01,02,2025протокол.pdf" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg hover:border-gold-500 transition group text-center">
+                            <div class="text-red-500 text-3xl mb-2 group-hover:scale-110 transition duration-300"><i class="fas fa-file-pdf"></i></div>
+                            <span class="text-sm font-bold text-gray-700 block">01.02.2025</span>
+                            <span class="text-xs text-gray-400 uppercase"> Хаттама</span>
+                        </a>
+                        <a href="doc/community/қамқоршылық кеңесі/хаттамалар/10,10,2023протокол.pdf" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg hover:border-gold-500 transition group text-center">
+                            <div class="text-red-500 text-3xl mb-2 group-hover:scale-110 transition duration-300"><i class="fas fa-file-pdf"></i></div>
+                            <span class="text-sm font-bold text-gray-700 block">10.10.2023</span>
+                            <span class="text-xs text-gray-400 uppercase"> Хаттама</span>
+                        </a>
+                        <a href="doc/community/қамқоршылық кеңесі/хаттамалар/13,11,2023протокол.pdf" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg hover:border-gold-500 transition group text-center">
+                            <div class="text-red-500 text-3xl mb-2 group-hover:scale-110 transition duration-300"><i class="fas fa-file-pdf"></i></div>
+                            <span class="text-sm font-bold text-gray-700 block">13.11.2023</span>
+                            <span class="text-xs text-gray-400 uppercase"> Хаттама</span>
+                        </a>
+                        <a href="doc/community/қамқоршылық кеңесі/хаттамалар/14,05,2025жпротокол.pdf" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg hover:border-gold-500 transition group text-center">
+                            <div class="text-red-500 text-3xl mb-2 group-hover:scale-110 transition duration-300"><i class="fas fa-file-pdf"></i></div>
+                            <span class="text-sm font-bold text-gray-700 block">14.05.2025</span>
+                            <span class="text-xs text-gray-400 uppercase"> Хаттама</span>
+                        </a>
+                        <a href="doc/community/қамқоршылық кеңесі/хаттамалар/20,11,2024протокол.pdf" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg hover:border-gold-500 transition group text-center">
+                            <div class="text-red-500 text-3xl mb-2 group-hover:scale-110 transition duration-300"><i class="fas fa-file-pdf"></i></div>
+                            <span class="text-sm font-bold text-gray-700 block">20.11.2024</span>
+                            <span class="text-xs text-gray-400 uppercase"> Хаттама</span>
+                        </a>
+                        <a href="doc/community/қамқоршылық кеңесі/хаттамалар/қамқоршылық кеңес отырысының хаттамасы номер5.pdf" class="block bg-white border border-gray-200 rounded-lg p-4 hover:shadow-lg hover:border-gold-500 transition group text-center">
+                            <div class="text-red-500 text-3xl mb-2 group-hover:scale-110 transition duration-300"><i class="fas fa-file-pdf"></i></div>
+                            <span class="text-sm font-bold text-gray-700 block">Кезекті</span>
+                            <span class="text-xs text-gray-400 uppercase">№5 Хаттама</span>
+                        </a>
+                    </div>
+                </section>
+
+                <hr class="border-gray-200">
+
+                <section>
+                    <div class="flex items-center mb-6">
+                        <span class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold mr-4 border border-emerald-200">05</span>
+                        <h3 class="text-xl font-bold text-emerald-900 uppercase tracking-wide">Отырыстар тарихы</h3>
+                    </div>
+
+                    <div class="space-y-4">
+                        <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                            <summary class="cursor-pointer p-5 flex items-center justify-between font-bold text-gray-800 hover:bg-white transition select-none">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center mr-3 text-sm">1</span>
+                                    1-ші Отырыс
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-400 arrow-icon transition-transform duration-300"></i>
+                            </summary>
+                            <div class="p-5 border-t border-gray-200 bg-white">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <img src="assets/images/image304.jpeg" class="rounded-lg shadow h-32 w-full object-cover cursor-pointer hover:opacity-80 transition" onclick="openLightbox(this.src)">
+                                    <img src="assets/images/image305.jpeg" class="rounded-lg shadow h-32 w-full object-cover cursor-pointer hover:opacity-80 transition" onclick="openLightbox(this.src)">
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                            <summary class="cursor-pointer p-5 flex items-center justify-between font-bold text-gray-800 hover:bg-white transition select-none">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center mr-3 text-sm">2</span>
+                                    2-ші Отырыс
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-400 arrow-icon transition-transform duration-300"></i>
+                            </summary>
+                            <div class="p-5 border-t border-gray-200 bg-white">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <img src="assets/images/image310.jpeg" class="rounded-lg shadow h-32 w-full object-cover cursor-pointer hover:opacity-80 transition" onclick="openLightbox(this.src)">
+                                    <img src="assets/images/image311.jpeg" class="rounded-lg shadow h-32 w-full object-cover cursor-pointer hover:opacity-80 transition" onclick="openLightbox(this.src)">
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden group">
+                            <summary class="cursor-pointer p-5 flex items-center justify-between font-bold text-gray-800 hover:bg-white transition select-none">
+                                <div class="flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center mr-3 text-sm">3</span>
+                                    3-ші Отырыс
+                                </div>
+                                <i class="fas fa-chevron-down text-gray-400 arrow-icon transition-transform duration-300"></i>
+                            </summary>
+                            <div class="p-5 border-t border-gray-200 bg-white">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <img src="assets/images/image320.jpeg" class="rounded-lg shadow h-32 w-full object-cover cursor-pointer hover:opacity-80 transition" onclick="openLightbox(this.src)">
+                                    <img src="assets/images/image321.jpeg" class="rounded-lg shadow h-32 w-full object-cover cursor-pointer hover:opacity-80 transition" onclick="openLightbox(this.src)">
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="bg-emerald-50 rounded-xl border border-emerald-200 overflow-hidden group" open>
+                            <summary class="cursor-pointer p-5 flex items-center justify-between font-bold text-emerald-900 hover:bg-emerald-100 transition select-none">
+                                <div class="flex items-center">
+                                    <i class="far fa-calendar-check mr-3 text-gold-600 text-xl"></i> 
+                                    2024 жыл, 20 қараша
+                                </div>
+                                <i class="fas fa-chevron-down text-emerald-600 arrow-icon transition-transform duration-300"></i>
+                            </summary>
+                            <div class="p-6 border-t border-emerald-200 bg-white flex flex-col md:flex-row gap-8">
+                                <div class="md:w-1/2">
+                                    <div class="video-container shadow-lg bg-black rounded-xl overflow-hidden">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                            title="YouTube video player" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                <div class="md:w-1/2">
+                                    <h4 class="font-bold text-lg text-emerald-900 mb-4 border-b pb-2">Күн тәртібі:</h4>
+                                    <ul class="space-y-3">
+                                        <li class="flex items-start text-gray-700">
+                                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                            Мектептің материалдық-техникалық базасын нығайту мәселелері.
+                                        </li>
+                                        <li class="flex items-start text-gray-700">
+                                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                            Асхана жұмысын бақылау комиссиясының есебі.
+                                        </li>
+                                        <li class="flex items-start text-gray-700">
+                                            <i class="fas fa-check-circle text-emerald-500 mt-1 mr-3"></i>
+                                            Оқушылардың қауіпсіздік шараларын күшейту.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </details>
+
+                        </div>
+                </section>
+
+            </div>
+        </div>
+
+
+        <section class="mb-24">
+            <div class="section-header text-center mb-16">
+                <h2 class="font-serif font-bold text-3xl text-emerald-900 uppercase tracking-widest relative inline-block">
+                    <i class="fas fa-handshake text-gold-500 mr-3"></i> Серіктестер
+                    <span class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gold-500 rounded"></span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex items-center justify-center hover:shadow-xl hover:-translate-y-2 transition duration-300 group h-48 w-full cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="assets/images/350.jpeg" alt="Серіктес 1" class="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition duration-500 opacity-70 group-hover:opacity-100">
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex items-center justify-center hover:shadow-xl hover:-translate-y-2 transition duration-300 group h-48 w-full cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="assets/images/351.jfif" alt="Серіктес 2" class="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition duration-500 opacity-70 group-hover:opacity-100">
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-md border border-gray-100 flex items-center justify-center hover:shadow-xl hover:-translate-y-2 transition duration-300 group h-48 w-full cursor-pointer" onclick="openLightbox(this.querySelector('img').src)">
+                    <img src="assets/images/352.jfif" alt="Серіктес 3" class="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 transition duration-500 opacity-70 group-hover:opacity-100">
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-12 pb-8 border-t-4 border-gold-500">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="#" class="hover:text-gold-500 transform hover:scale-110 transition"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-gold-500 transform hover:scale-110 transition"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-gold-500 transform hover:scale-110 transition"><i class="fab fa-youtube text-2xl"></i></a>
+            </div>
+             <p class="text-emerald-100 text-sm font-medium">&copy; 2025 Мектеп-Лицей. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 hidden" onclick="closeLightbox()">
+        <button class="absolute top-5 right-5 text-white text-4xl hover:text-gold-500 transition">&times;</button>
+        <img id="lightbox-img" src="" class="max-w-[90%] max-h-[90%] rounded-lg shadow-2xl border-4 border-white">
+    </div>
+
+    <script>
+        // Лайтбоксты ашу
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Скроллды бұғаттау
+        }
+
+        // Лайтбоксты жабу
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Скроллды қосу
+        }
+    </script>
+
+</body>
+</html>

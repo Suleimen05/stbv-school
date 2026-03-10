@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Білім беру - Мектеп-Лицей</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 50: '#f0fdfa', 100: '#ccfbf1', 600: '#007f91', 800: '#005f6e', 900: '#004755' },
+                        gold: { 400: '#fbbf24', 500: '#f59e0b' }
+                    },
+                    fontFamily: { sans: ['Roboto', 'sans-serif'], serif: ['Merriweather', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #004755; }
+        
+        .section-header { position: relative; display: inline-block; margin-bottom: 2rem; }
+        .section-header::after { content: ''; position: absolute; width: 60px; height: 3px; background: #f59e0b; bottom: -10px; left: 0; }
+        
+        /* Timeline styles for Part 3 */
+        .timeline-line { position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: #e5e7eb; }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen">
+
+    <header class="fixed w-full z-40 top-0 bg-white/95 backdrop-blur shadow-md py-2">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-4 flex-none">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl border-2 border-gold-500 bg-emerald-900 text-white shadow-lg">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="flex flex-col text-emerald-900 hidden md:flex">
+                        <span class="font-serif font-black text-lg uppercase leading-tight">МЕКТЕП-ЛИЦЕЙ</span>
+                    </div>
+                </a>
+                <nav class="hidden lg:flex flex-1 justify-end items-center font-serif font-bold text-sm uppercase text-emerald-900 space-x-8">
+                    <a href="index.html" class="hover:text-gold-500 transition">Басты бет</a>
+                    <a href="admin.html" class="hover:text-gold-500 transition">Әкімшілік</a>
+                    <a href="education.html" class="text-gold-500 border-b-2 border-gold-500 pb-1">Білім беру</a>
+                    <a href="services.html" class="hover:text-gold-500 transition">Инфрақұрылым</a>
+                    <a href="community.html" class="hover:text-gold-500 transition">Қоғамдастық</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-4 pt-28 pb-16">
+        
+        <div class="text-center mb-16">
+            <h1 class="font-serif font-black text-4xl text-emerald-900 uppercase tracking-wide">Ғылыми-әдістемелік жұмыс</h1>
+            <div class="h-1 w-32 bg-gold-500 mx-auto rounded mt-4"></div>
+            <p class="text-gray-500 mt-3">Білім сапасын арттыру және озат тәжірибені тарату</p>
+        </div>
+
+       <style>
+            /* Модальды терезе стилі */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 100;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.85);
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+            .modal.active { display: block; opacity: 1; }
+            .modal-content {
+                background-color: #fefefe;
+                margin: 4% auto;
+                padding: 0;
+                border: none;
+                width: 90%;
+                max-width: 1100px;
+                border-radius: 16px;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+                transform: translateY(-50px);
+                transition: transform 0.3s ease;
+                overflow: hidden;
+            }
+            .modal.active .modal-content { transform: translateY(0); }
+            .close-btn {
+                position: absolute;
+                top: 15px;
+                right: 25px;
+                color: #fff;
+                background: rgba(0,0,0,0.3);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                cursor: pointer;
+                z-index: 20;
+                transition: all 0.2s;
+            }
+            .close-btn:hover { background: #f59e0b; color: white; }
+            .modal-header {
+                background: linear-gradient(to right, #004755, #005f6e);
+                padding: 20px 30px;
+                color: white;
+            }
+            .modal-body { padding: 30px; max-height: 80vh; overflow-y: auto; background: #f9fafb; }
+            
+            /* Карточкалар дизайны (Ішкі) */
+            .winner-card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                border: 1px solid #e5e7eb;
+                transition: transform 0.3s;
+            }
+            .winner-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+            .winner-img-box {
+                height: 220px;
+                overflow: hidden;
+                position: relative;
+            }
+            .winner-img-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Суретті қиып, әдемі көрсетеді */
+                object-position: top;
+            }
+        </style>
+
+        <section class="mb-20">
+            <div class="section-header text-center w-full mb-10">
+                <h2 class="font-serif font-bold text-3xl text-emerald-900 uppercase tracking-widest">
+                    <i class="fas fa-star text-gold-500 mr-2"></i> Жұлдыздар аллеясы
+                </h2>
+                <p class="text-gray-500 mt-2">Мектебіміздің мақтаныштары мен жетістіктер тарихы</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="group bg-white rounded-xl shadow-lg cursor-pointer overflow-hidden transform transition hover:-translate-y-2 hover:shadow-2xl border-b-4 border-emerald-600" onclick="openModal('modal-creative')">
+                    <div class="h-40 bg-emerald-50 flex items-center justify-center relative">
+                        <i class="fas fa-palette text-5xl text-emerald-600 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">Шығармашылық шыңдары</h3>
+                        <p class="text-xs text-gray-500 mb-3">Елдосұлы С., Сандыбай І., Экостан, DARYN ECOART</p>
+                        <span class="text-gold-500 text-xs font-bold uppercase border border-gold-500 px-3 py-1 rounded-full group-hover:bg-gold-500 group-hover:text-white transition">Ашу <i class="fas fa-angle-right ml-1"></i></span>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-lg cursor-pointer overflow-hidden transform transition hover:-translate-y-2 hover:shadow-2xl border-b-4 border-blue-500" onclick="openModal('modal-science')">
+                    <div class="h-40 bg-blue-50 flex items-center justify-center relative">
+                        <i class="fas fa-atom text-5xl text-blue-500 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">«Зерде» және Ғылым</h3>
+                        <p class="text-xs text-gray-500 mb-3">Ерасыл, Көркем, Томирис және республикалық жобалар</p>
+                        <span class="text-blue-500 text-xs font-bold uppercase border border-blue-500 px-3 py-1 rounded-full group-hover:bg-blue-500 group-hover:text-white transition">Ашу <i class="fas fa-angle-right ml-1"></i></span>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-lg cursor-pointer overflow-hidden transform transition hover:-translate-y-2 hover:shadow-2xl border-b-4 border-purple-500" onclick="openModal('modal-kga')">
+                    <div class="h-40 bg-purple-50 flex items-center justify-center relative">
+                        <i class="fas fa-university text-5xl text-purple-500 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">Кіші Ғылым Академиясы</h3>
+                        <p class="text-xs text-gray-500 mb-3">46-шы конференция нәтижелері (19 жоба)</p>
+                        <span class="text-purple-500 text-xs font-bold uppercase border border-purple-500 px-3 py-1 rounded-full group-hover:bg-purple-500 group-hover:text-white transition">Ашу <i class="fas fa-angle-right ml-1"></i></span>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-xl shadow-lg cursor-pointer overflow-hidden transform transition hover:-translate-y-2 hover:shadow-2xl border-b-4 border-gold-500" onclick="openModal('modal-olympiad')">
+                    <div class="h-40 bg-gold-50 flex items-center justify-center relative">
+                        <i class="fas fa-trophy text-5xl text-gold-500 group-hover:scale-110 transition duration-500"></i>
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">Зияткерлік Олимпиадалар</h3>
+                        <p class="text-xs text-gray-500 mb-3">І.Сандыбай (Бас жүлде), IQ Олимпиада Кубогы</p>
+                        <span class="text-gold-500 text-xs font-bold uppercase border border-gold-500 px-3 py-1 rounded-full group-hover:bg-gold-500 group-hover:text-white transition">Ашу <i class="fas fa-angle-right ml-1"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <div id="modal-creative" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('modal-creative')">&times;</span>
+                <div class="modal-header">
+                    <h2 class="font-serif font-bold text-2xl uppercase"><i class="fas fa-palette mr-3"></i> Шығармашылық байқау жеңімпаздары</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <div class="winner-card">
+                            <div class="winner-img-box">
+                                <img src="assets\images/image1.jpeg" alt="Елдосұлы Сүлеймен">
+                                <div class="absolute top-2 right-2 bg-gold-500 text-white text-xs font-bold px-2 py-1 rounded shadow">ЖЕҢІМПАЗ</div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg leading-tight mb-2">Елдосұлы Сүлеймен</h4>
+                                <p class="text-xs text-gray-500 mb-2 font-bold"><i class="fas fa-chalkboard-teacher mr-1"></i> Жетекшісі: Айша Жадгеровна</p>
+                                <p class="text-sm text-gray-600">«Өңір және тарихи тұлғалары» атты шығармашылық байқауының жеңімпазы.</p>
+                            </div>
+                        </div>
+
+                        <div class="winner-card">
+                            <div class="winner-img-box">
+                                <img src="assets/images/image2.jpeg" alt="Сандыбай Іңкәр">
+                                <div class="absolute top-2 right-2 bg-gold-500 text-white text-xs font-bold px-2 py-1 rounded shadow">ЖЕҢІМПАЗ</div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg leading-tight mb-2">Сандыбай Іңкәр</h4>
+                                <p class="text-xs text-gray-500 mb-2 font-bold"><i class="fas fa-chalkboard-teacher mr-1"></i> Жетекшісі: Мирамгул Аралбаевна</p>
+                                <p class="text-sm text-gray-600">«Ер есімі – ел есінде» тақырыбындағы эссе байқауының жеңімпазы.</p>
+                            </div>
+                        </div>
+
+                         <div class="winner-card">
+                            <div class="winner-img-box">
+                                <img src="assets/images/image3.jpeg" alt="Бақдәулетова Назерке">
+                                <div class="absolute top-2 right-2 bg-emerald-600 text-white text-xs font-bold px-2 py-1 rounded shadow">3 ОРЫН</div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg leading-tight mb-2">Бақдәулетова Назерке</h4>
+                                <p class="text-xs text-gray-500 mb-2 font-bold"><i class="fas fa-chalkboard-teacher mr-1"></i> Жетекшісі: Баян Аманқосқызы</p>
+                                <p class="text-sm text-gray-600">«ЭКОСТАН-ға саяхат» республикалық экологиялық байқауының жүлдегері.</p>
+                            </div>
+                        </div>
+
+                         <div class="winner-card">
+                            <div class="winner-img-box">
+                                <img src="assets/images/image4.jpeg" alt="Жамалова Алина">
+                                <div class="absolute top-2 right-2 bg-emerald-600 text-white text-xs font-bold px-2 py-1 rounded shadow">2 ОРЫН</div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg leading-tight mb-2">Жамалова Алина</h4>
+                                <p class="text-xs text-gray-500 mb-2 font-bold"><i class="fas fa-chalkboard-teacher mr-1"></i> Жетекшісі: Анар Женисовна</p>
+                                <p class="text-sm text-gray-600">«DARYN ECOART» экологиялық сурет және қолөнер байқауы.</p>
+                            </div>
+                        </div>
+
+                        <div class="winner-card">
+                            <div class="winner-img-box">
+                                <img src="assets/images/image5.jpeg" alt="Искакова Альбина">
+                                <div class="absolute top-2 right-2 bg-gold-500 text-white text-xs font-bold px-2 py-1 rounded shadow">ЖЕҢІМПАЗ</div>
+                            </div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg leading-tight mb-2">Искакова Альбина</h4>
+                                <p class="text-xs text-gray-500 mb-2 font-bold"><i class="fas fa-chalkboard-teacher mr-1"></i> Жетекшісі: Салтанат Гадилжановна</p>
+                                <p class="text-sm text-gray-600">«DARYN ECOART» экологиялық байқауының жеңімпазы.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="modal-science" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('modal-science')">&times;</span>
+                <div class="modal-header">
+                    <h2 class="font-serif font-bold text-2xl uppercase"><i class="fas fa-atom mr-3"></i> «Зерде» және Ғылыми жобалар</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        
+                        <div class="winner-card">
+                            <div class="winner-img-box"><img src="assets/images/image6.jpeg"></div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg mb-1">Кажигалиев Ерасыл</h4>
+                                <p class="text-xs text-blue-500 font-bold mb-2">Мақтау қағазы</p>
+                                <p class="text-xs text-gray-500 font-bold mb-2">Жетекшілері: М.Аралбаевна, Ә.Жаппарқұлқызы</p>
+                                <p class="text-sm text-gray-600">«Зерде» конкурсы (Қазақ тілі мен әдебиеті).</p>
+                            </div>
+                        </div>
+
+                        <div class="winner-card">
+                            <div class="winner-img-box"><img src="assets/images/image7.jpeg"></div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg mb-1">Мұхитова К. мен Нұржанова А.</h4>
+                                <p class="text-xs text-emerald-600 font-bold mb-2">3 ОРЫН</p>
+                                <p class="text-xs text-gray-500 font-bold mb-2">Жетекшісі: А.Б.Сармантаева</p>
+                                <p class="text-sm text-gray-600">«Зерде» конкурсы (Медицина, психология секциясы).</p>
+                            </div>
+                        </div>
+
+                        <div class="winner-card">
+                            <div class="winner-img-box"><img src="assets/images/image9.jpeg"></div>
+                            <div class="p-5">
+                                <h4 class="font-bold text-emerald-900 text-lg mb-1">Дусказиева Томирис</h4>
+                                <p class="text-xs text-emerald-600 font-bold mb-2">2 ОРЫН</p>
+                                <p class="text-xs text-gray-500 font-bold mb-2">Жетекшілері: Л.Идирисовна, Г.Едигеевна</p>
+                                <p class="text-sm text-gray-600">«Зерде» конкурсы (Орыс тілі мен әдебиеті).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <h3 class="font-bold text-xl text-blue-900 mb-4"><i class="fas fa-chart-pie mr-2"></i> Республикалық ғылыми жобалар статистикасы</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded shadow-sm flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-4">4</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">2-орын иегерлері</h4>
+                                    <p class="text-xs text-gray-500">Тіл білімі (қазақ, ағылшын, орыс), Биология</p>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded shadow-sm flex items-center">
+                                <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mr-4">6</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">3-орын иегерлері</h4>
+                                    <p class="text-xs text-gray-500">Тарих, математика, өлкетану секциялары</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 mt-4 overflow-x-auto pb-2">
+                             <img src="assets/images/image20.jpeg" class="h-24 rounded shadow">
+                             <img src="assets/images/image21.jpeg" class="h-24 rounded shadow">
+                             <img src="assets/images/image22.jpeg" class="h-24 rounded shadow">
+                             <img src="assets/images/image23.jpeg" class="h-24 rounded shadow">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="modal-kga" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('modal-kga')">&times;</span>
+                <div class="modal-header" style="background: linear-gradient(to right, #6b21a8, #7e22ce);">
+                    <h2 class="font-serif font-bold text-2xl uppercase"><i class="fas fa-university mr-3"></i> Кіші Ғылым Академиясы</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="bg-purple-50 p-6 rounded-xl border border-purple-100 mb-6">
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            2020 жылдың 25 қарашасында өткен Кіші Ғылым Академиясының Өңірлік 46-шы Республикалық ғылыми конференциясына мектеп-лицейден <strong>19 ғылыми жоба</strong> қатысты. Нәтижесінде:
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center">
+                        <div class="bg-white p-6 rounded-xl shadow border-t-4 border-blue-400">
+                            <div class="text-4xl font-black text-blue-400 mb-2">6</div>
+                            <div class="font-bold text-gray-700 uppercase text-sm">Мадақтау қағазы</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow border-t-4 border-emerald-500">
+                            <div class="text-4xl font-black text-emerald-500 mb-2">4</div>
+                            <div class="font-bold text-gray-700 uppercase text-sm">2-ші орын</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl shadow border-t-4 border-gold-500">
+                            <div class="text-4xl font-black text-gold-500 mb-2">9</div>
+                            <div class="font-bold text-gray-700 uppercase text-sm">3-ші орын</div>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-xl text-purple-900 mb-4">Жүлдегерлер галереясы</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        <img src="assets/images/image10.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image11.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image12.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image13.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image14.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image15.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image16.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image17.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image18.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        
+                        <img src="assets/images/image20.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image21.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image22.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image23.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image22.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image25.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image26.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image27.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                        <img src="assets/images/image28.jpeg" class="w-full h-32 object-cover rounded shadow hover:scale-105 transition">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="modal-olympiad" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal('modal-olympiad')">&times;</span>
+                <div class="modal-header" style="background: linear-gradient(to right, #b45309, #d97706);">
+                    <h2 class="font-serif font-bold text-2xl uppercase"><i class="fas fa-trophy mr-3"></i> Зияткерлік Олимпиадалар</h2>
+                </div>
+                <div class="modal-body">
+                    
+                    <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-lg border border-gold-200 overflow-hidden mb-8">
+                        <div class="md:w-1/3 h-64">
+                            <img src="assets/images/image39.jpeg" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                            <span class="inline-block bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full w-fit mb-3">БАС ЖҮЛДЕ</span>
+                            <h3 class="font-serif font-bold text-2xl text-emerald-900 mb-2">І.Сандыбай (5 «Д» класс)</h3>
+                            <p class="text-gray-600 mb-4">5-6 сынып оқушыларына арналған Республикалық олимпиаданың облыстық кезеңінде «Қазақстан тарихы» пәнінен жоғары білім көрсетті.</p>
+                            <p class="text-sm font-bold text-emerald-700"><i class="fas fa-user-tie mr-2"></i> Жетекшісі: Н. Мунайтбасова</p>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-xl text-emerald-900 mb-4 border-b pb-2">5-6 сынып олимпиадасының жүлдегерлері</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                         <img src="assets/images/image40.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image41.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image42.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image43.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image44.jpeg" class="w-full h-40 object-cover rounded shadow">
+
+                         <img src="assets/images/image29.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image31.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image32.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image33.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image34.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image35.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image36.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image37.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image38.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         <img src="assets/images/image39.jpeg" class="w-full h-40 object-cover rounded shadow">
+                         
+                    </div>
+                    <p class="text-sm text-gray-500 italic mb-8">Жетекшілері: Г. Абдуалиева, М. Конисбаева, Г. Досмаганбетова, Ж. Бақытжанова.</p>
+
+                    <div class="bg-gradient-to-r from-emerald-50 to-emerald-100 p-6 rounded-xl flex items-center shadow-inner">
+                        <img src="assets/images/image45.jpeg" class="w-32 h-32 rounded-lg shadow-lg border-2 border-white mr-6 object-cover">
+                        <div>
+                            <h3 class="font-bold text-xl text-emerald-900 mb-2">IQ Олимпиада-2020 Кубогы</h3>
+                            <p class="text-gray-700 text-sm mb-2">Мектебімізден 226 оқушы қатысып, белсенділігі мен дайындығы үшін мектепке арнайы <strong>КУБОК</strong> пен Алғыс хат табысталды.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openModal(id) {
+                document.getElementById(id).classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeModal(id) {
+                document.getElementById(id).classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            window.onclick = function(e) {
+                if (e.target.classList.contains('modal')) {
+                    e.target.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        </script>
+
+       <section class="mb-20 bg-emerald-50 p-6 md:p-10 rounded-3xl border border-emerald-100 shadow-inner relative overflow-hidden">
+            
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-gold-200 rounded-full opacity-20 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-emerald-200 rounded-full opacity-20 blur-3xl"></div>
+
+            <div class="section-header relative z-10">
+                <h2 class="font-serif font-bold text-3xl text-emerald-900 uppercase"><i class="fas fa-book-reader text-gold-500 mr-3"></i> 2. Әдістемелік қоржын</h2>
+                <p class="text-gray-600 mt-2 max-w-3xl">
+                    Қаныш Сәтбаев атындағы мектеп-лицейі педагогтары Қ.Жұбанов атындағы Ақтөбе өңірлік университетінің профессор-оқытушылар құрамы мен ынтымақтастық меморандумы аясында бірлесіп, <span class="font-bold text-emerald-700">6 оқу-әдістемелік құрал</span> әзірледі.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8 relative z-10">
+                
+                <div class="lg:col-span-1 grid grid-cols-2 gap-4">
+                    <div class="group relative overflow-hidden rounded-lg shadow-md border border-gray-200 bg-white">
+                        <img src="assets/images/image103.jpeg" class="w-full h-40 object-cover group-hover:scale-105 transition duration-500" alt="Математика">
+                        <div class="absolute bottom-0 left-0 w-full bg-emerald-900/80 text-white text-xs text-center py-1">Жаңартылған білім мазмұны бойынша критериалды оқытудың әдістемесі</div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-md border border-gray-200 bg-white">
+                        <img src="assets/images/image104.jpeg" class="w-full h-40 object-cover group-hover:scale-105 transition duration-500" alt="Физика">
+                        <div class="absolute bottom-0 left-0 w-full bg-emerald-900/80 text-white text-xs text-center py-1">Білім беру мазмұнын жаңарту аясында оқушының зерттеулік дағдыларын қалыптастыру</div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-md border border-gray-200 bg-white">
+                        <img src="assets/images/image102.jpeg" class="w-full h-40 object-cover group-hover:scale-105 transition duration-500" alt="Химия">
+                        <div class="absolute bottom-0 left-0 w-full bg-emerald-900/80 text-white text-xs text-center py-1">Химия</div>
+                    </div>
+                    <div class="group relative overflow-hidden rounded-lg shadow-md border border-gray-200 bg-white">
+                        <img src="assets/images/image105.jpeg" class="w-full h-40 object-cover group-hover:scale-105 transition duration-500" alt="Биология">
+                        <div class="absolute bottom-0 left-0 w-full bg-emerald-900/80 text-white text-xs text-center py-1">Физика</div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-emerald-900 text-white text-sm uppercase">
+                                    <th class="p-4 border-b border-emerald-800 w-12 text-center">№</th>
+                                    <th class="p-4 border-b border-emerald-800">Құралдың атауы</th>
+                                    <th class="p-4 border-b border-emerald-800">Құрастырушылар</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm text-gray-700 divide-y divide-gray-100">
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="p-4 text-center font-bold text-gold-500">1</td>
+                                    <td class="p-4 font-bold text-emerald-900">Математикадан стандартты емес есептерді шешу әдістемесі</td>
+                                    <td class="p-4 text-gray-600">Б.Ж.Омарова, Ә.А.Танақұлов</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="p-4 text-center font-bold text-gold-500">2</td>
+                                    <td class="p-4 font-bold text-emerald-900">Физика пәні бойынша теориялық ұғымдар және тапсырмалар жинағы</td>
+                                    <td class="p-4 text-gray-600">А.Е.Әбдрахманов, Ж.А.Исағалиев</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="p-4 text-center font-bold text-gold-500">3</td>
+                                    <td class="p-4 font-bold text-emerald-900">Химия пәнін кіріктіре оқыту</td>
+                                    <td class="p-4 text-gray-600">Б.С.Имангалиева, А.Ж.Омарова</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="p-4 text-center font-bold text-gold-500">4</td>
+                                    <td class="p-4 font-bold text-emerald-900">Жаңартылған білім мазмұны бойынша критериалды оқытудың әдістемесі</td>
+                                    <td class="p-4 text-gray-600">А.Т.Каирова, Г.Б.Татаманова</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="p-4 text-center font-bold text-gold-500">5</td>
+                                    <td class="p-4 font-bold text-emerald-900">Білім беру мазмұнын жаңарту аясында оқушының зерттеулік дағдыларын қалыптастыру</td>
+                                    <td class="p-4 text-gray-600">Г.Б.Избасарова, Н.М.Мунайтбасова</td>
+                                </tr>
+                                <tr class="hover:bg-emerald-50 transition">
+                                    <td class="p-4 text-center font-bold text-gold-500">6</td>
+                                    <td class="p-4 font-bold text-emerald-900">Methodical instructions to practical studies on Physiology of human and animal</td>
+                                    <td class="p-4 text-gray-600">N.A. Utarbaeva, Zh.Zh. Kukenov</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-px bg-emerald-200 my-12 relative z-10"></div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row relative z-10">
+                
+                <div class="lg:w-2/5 relative min-h-[300px]">
+                    <img src="assets/images/лф.jpeg" class="absolute inset-0 w-full h-full object-cover" alt="Абай конференциясы">
+                    <div class="absolute bottom-4 left-4 flex space-x-2">
+                        <img src="assets/images/55.jpeg" class="w-16 h-16 rounded-lg border-2 border-white shadow-lg object-cover cursor-pointer hover:scale-110 transition">
+                        </div>
+                    <div class="absolute top-4 left-4 bg-gold-500 text-white font-bold px-3 py-1 rounded text-sm shadow">
+                        22 Желтоқсан 2020
+                    </div>
+                </div>
+
+                <div class="lg:w-3/5 p-8 flex flex-col justify-center">
+                    <h3 class="font-serif font-bold text-2xl text-emerald-900 mb-4 leading-tight">
+                        «Абайдың сөздүниесі және мектеп өміріндегі Абай»
+                    </h3>
+                    <div class="text-gray-600 text-sm leading-relaxed space-y-4 text-justify">
+                        <p>
+                            А.Байтұрсынов атындағы тіл білімі институты ұйымдастырған республикалық ғылыми-практикалық онлайн дөңгелек үстел өтті. Шараға республика бойынша <span class="font-bold text-emerald-700">240 ғалым мен педагог</span> қатысты.
+                        </p>
+                        <p>
+                            Жиында ф.ғ.д., профессор Н.Уәли «Абай мұрасындағы этикалық ұғымдар» тақырыбында баяндама жасады. Абай шығармаларындағы адамгершілік, адалдық, ақыл-парасат құндылықтары мен қоғамдағы антиқұндылықтар (арсыздық, жалқаулық) мәселелері талқыланды.
+                        </p>
+                        <p class="italic text-gray-500 border-l-4 border-gold-500 pl-3">
+                            «Толық адам» ілімі мен кемел адам идеалдары сараланып, институт қорындағы сирек басылымдар мен зерттеу еңбектері таныстырылды.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="mb-20">
+            <div class="section-header">
+                <h2 class="font-serif font-bold text-2xl text-emerald-900 uppercase"><i class="fas fa-chalkboard-teacher text-gold-500 mr-2"></i> 3. Жас мамандар мектебі</h2>
+            </div>
+
+            <div class="relative pl-8 space-y-8">
+                <div class="timeline-line"></div>
+                
+                <div class="relative">
+                    <div class="absolute -left-10 bg-emerald-600 h-6 w-6 rounded-full border-4 border-white shadow"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-gold-500">
+                        <span class="text-xs font-bold text-gray-400 uppercase mb-1 block">15 желтоқсан 2022</span>
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">«Жас маман - жарқын болашақ иесі» тимбилдингі</h3>
+                        <p class="text-gray-600 text-sm">Мектеп психологы Мулдагазина М.Е жас мамандармен бірлесіп жұмыс жасау дағдыларын қалыптастыру мақсатында тренинг өткізді.</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-10 bg-emerald-600 h-6 w-6 rounded-full border-4 border-white shadow"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-emerald-500">
+                        <span class="text-xs font-bold text-gray-400 uppercase mb-1 block">04 қаңтар 2023</span>
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">«Жас Қанат» отырысы: Құжаттарды толтыру</h3>
+                        <p class="text-gray-600 text-sm">Класс жетекші құжаттарын толтыру және сабақ жоспарларының үлгілері бойынша тәжірибелі педагогтер (С.Абдіқалықова, А.Байбекова) шеберлік сағатын өткізді.</p>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="absolute -left-10 bg-emerald-600 h-6 w-6 rounded-full border-4 border-white shadow"></div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-gold-500">
+                        <span class="text-xs font-bold text-gray-400 uppercase mb-1 block">12 қараша 2022</span>
+                        <h3 class="font-bold text-lg text-emerald-900 mb-2">Білімдегі олқылықтарды толықтыру</h3>
+                        <p class="text-gray-600 text-sm">Функционалдық сауаттылықты арттыру және практикалық сабақтарды ұйымдастыру жолдары талқыланды.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+     <section class="mb-20">
+            <div class="section-header relative z-10 mb-12">
+                 <h2 class="font-serif font-bold text-3xl text-emerald-900 uppercase"><i class="fas fa-lightbulb text-gold-500 mr-3"></i> 4. Озық тәжірибе - ортақ қазына</h2>
+                 <div class="h-1 w-24 bg-gold-500 rounded mt-2"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-10">
+
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row border border-gray-100 group transition hover:shadow-2xl">
+                    <div class="md:w-2/5 h-64 md:h-80 relative overflow-hidden shrink-0">
+                        <img src="assets/images/201.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Бастауыш семинар">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 left-4 bg-gold-500 text-white px-3 py-1 text-sm font-bold rounded-lg shadow-md flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i> 24 мамыр 2023
+                        </span>
+                    </div>
+                    <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-tight">Бастауыш сыныптарда белсенді әдіс-тәсілдерді қолдану</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">Қаныш Сәтбаев атындағы орта мектеп лицейдің бастауыш сынып мұғалімдері Т.Н.Есеева және М.Ш.Қожабектің ұйымдастыруымен қалалық шебер класс өтті.</p>
+                        <details class="group/spoiler mt-auto">
+                            <summary class="text-emerald-700 font-bold cursor-pointer hover:text-gold-600 transition list-none flex items-center select-none text-sm">
+                                <span class="border-b-2 border-emerald-200 group-hover/spoiler:border-gold-500 py-1">Толығырақ оқу</span> <i class="fas fa-chevron-down ml-2 group-open/spoiler:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 animate-fadeIn">
+                                Мақсаты: жаңа технологияларды қолдану және іс-тәжірибемен алмасу. Жұмыс барысында жаңа әдіс-тәсілдер көрсетіліп, жаратылыстану пәні бойынша зерттеу жұмыстары жүргізілді.
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row-reverse border border-gray-100 group transition hover:shadow-2xl">
+                    <div class="md:w-2/5 h-64 md:h-80 relative overflow-hidden shrink-0">
+                        <img src="assets/images/203.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="География">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 right-4 bg-emerald-600 text-white px-3 py-1 text-sm font-bold rounded-lg shadow-md flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i> 17 мамыр 2023
+                        </span>
+                    </div>
+                    <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-tight">Географиядан олимпиада тапсырмаларына негізделген есептер</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">География пәні мұғалімі Исагалиев Жасұлан Жайықұлының «Географиялық есептерді тиімді шығару жолдары» тақырыбындағы облыстық шебер-класы өтті.</p>
+                         <details class="group/spoiler mt-auto">
+                            <summary class="text-emerald-700 font-bold cursor-pointer hover:text-gold-600 transition list-none flex items-center select-none text-sm">
+                                <span class="border-b-2 border-emerald-200 group-hover/spoiler:border-gold-500 py-1">Толығырақ оқу</span> <i class="fas fa-chevron-down ml-2 group-open/spoiler:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 animate-fadeIn">
+                                Қатысушылар: облыстың 11 мұғалімі. Шебер-класста А.Табылғанқызы, М.Унгарбаев және А.Орынбасаров өз тәжірибелерімен бөлісті.
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row border border-gray-100 group transition hover:shadow-2xl">
+                    <div class="md:w-2/5 h-64 md:h-80 relative overflow-hidden shrink-0">
+                        <img src="assets/images/206.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Жаңа мектеп">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 left-4 bg-blue-600 text-white px-3 py-1 text-sm font-bold rounded-lg shadow-md flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i> 20 сәуір 2023
+                        </span>
+                    </div>
+                    <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-tight">Жаңа мектеп – заманауи мұғалім</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">Математика, физика және информатика пәндерін оқытуда оқушылардың функционалдық сауаттылығын арттыру жолдары бойынша қалалық семинар өтті.</p>
+                         <details class="group/spoiler mt-auto">
+                            <summary class="text-emerald-700 font-bold cursor-pointer hover:text-gold-600 transition list-none flex items-center select-none text-sm">
+                                <span class="border-b-2 border-emerald-200 group-hover/spoiler:border-gold-500 py-1">Толығырақ оқу</span> <i class="fas fa-chevron-down ml-2 group-open/spoiler:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 animate-fadeIn">
+                                Қатысушылар саны: 25 мұғалім. Практикалық бөлімде «Рационал теңсіздіктер», «Ықтималдық» және «Python» тақырыптарында шеберлік сыныптары көрсетілді.
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row-reverse border border-gray-100 group transition hover:shadow-2xl">
+                    <div class="md:w-2/5 h-64 md:h-80 relative overflow-hidden shrink-0">
+                         <img src="assets/images/7777.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Өлкетану">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 right-4 bg-orange-500 text-white px-3 py-1 text-sm font-bold rounded-lg shadow-md flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i> 31 наурыз 2023
+                        </span>
+                    </div>
+                    <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-tight">Мектепте өлкетану жұмыстарын ұйымдастыру</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">Қ.Жұбанов атындағы Ақтөбе өңірлік университетімен меморандум аясында әдістемелік семинар өтті. Мақсаты: өлкетану жұмыстарын ұйымдастыру тәжірибесімен бөлісу.</p>
+                        <details class="group/spoiler mt-auto">
+                            <summary class="text-emerald-700 font-bold cursor-pointer hover:text-gold-600 transition list-none flex items-center select-none text-sm">
+                                <span class="border-b-2 border-emerald-200 group-hover/spoiler:border-gold-500 py-1">Толығырақ оқу</span> <i class="fas fa-chevron-down ml-2 group-open/spoiler:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 animate-fadeIn">
+                                География пәні мұғалімі Ж.Исағалиев «Өлкетанудағы АКТ мүмкіншіліктері» және К.Молдашева «Ақтөбе ойконимдері» тақырыптарында баяндама жасады.
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row border border-gray-100 group transition hover:shadow-2xl">
+                    <div class="md:w-2/5 h-64 md:h-80 relative overflow-hidden shrink-0">
+                        <img src="assets/images/221.jpeg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Физика">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 left-4 bg-purple-600 text-white px-3 py-1 text-sm font-bold rounded-lg shadow-md flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i> 18 мамыр 2023
+                        </span>
+                    </div>
+                    <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-tight">Оқушы құзіреттілігін ойын элементтері арқылы арттыру</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">М.Т Тұрғанбаеваның «Физикадан күрделі есептерді шешу жолдары» тақырыбындағы облыстық шебер класының қорытынды отырысы өтті.</p>
+                        <details class="group/spoiler mt-auto">
+                            <summary class="text-emerald-700 font-bold cursor-pointer hover:text-gold-600 transition list-none flex items-center select-none text-sm">
+                                <span class="border-b-2 border-emerald-200 group-hover/spoiler:border-gold-500 py-1">Толығырақ оқу</span> <i class="fas fa-chevron-down ml-2 group-open/spoiler:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 animate-fadeIn">
+                                М.М.Хасен «Электродинамика» бойынша коучинг өткізді. Ж.А.Исағалиев 8-сыныптар арасында «Физбол» ойынын ұйымдастырды.
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                 <article class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row-reverse border border-gray-100 group transition hover:shadow-2xl">
+                    <div class="md:w-2/5 h-64 md:h-80 relative overflow-hidden shrink-0">
+                        <img src="assets/images/220.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-110" alt="Ағылшын тілі">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+                        <span class="absolute bottom-4 right-4 bg-red-500 text-white px-3 py-1 text-sm font-bold rounded-lg shadow-md flex items-center">
+                            <i class="far fa-calendar-alt mr-2"></i> 3 мамыр 2023
+                        </span>
+                    </div>
+                    <div class="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+                        <h3 class="font-serif font-bold text-xl text-emerald-900 mb-3 leading-tight">Оқу және сөйлеу дағдыларын қалыптастыру</h3>
+                        <p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">Ағылшын тілі пәні мұғалімі Ж.С.Шындаулованың «Тиімді әдістер мен жаттығуларды пайдалану» тақырыбындағы №3 педагогикалық шеберханасы өтті.</p>
+                        <details class="group/spoiler mt-auto">
+                            <summary class="text-emerald-700 font-bold cursor-pointer hover:text-gold-600 transition list-none flex items-center select-none text-sm">
+                                <span class="border-b-2 border-emerald-200 group-hover/spoiler:border-gold-500 py-1">Толығырақ оқу</span> <i class="fas fa-chevron-down ml-2 group-open/spoiler:rotate-180 transition-transform"></i>
+                            </summary>
+                            <div class="mt-4 text-sm text-gray-600 bg-emerald-50 p-4 rounded-xl border-l-4 border-emerald-500 animate-fadeIn">
+                                «Printdiscuss», «debatewise», «liveworksheets» платформалары көрсетілді. «Two trues one lie» және «Сенімділік» тренингтері ұйымдастырылды.
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    
+
+
+        <style>
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fadeIn {
+                animation: fadeIn 0.3s ease-out forwards;
+            }
+        </style>
+
+    </main>
+
+    <footer class="bg-emerald-900 text-white pt-10 pb-6 border-t-4 border-gold-500">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="hover:text-gold-500"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-gold-500"><i class="fab fa-facebook text-xl"></i></a>
+                <a href="#" class="hover:text-gold-500"><i class="fab fa-youtube text-xl"></i></a>
+            </div>
+             <p class="text-emerald-100 text-sm">&copy; 2025 Мектеп-Лицей. Барлық құқықтар қорғалған.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
