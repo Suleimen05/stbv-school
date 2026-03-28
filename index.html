@@ -429,7 +429,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <a href="#" class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group">
+                <div onclick="openNewsModal(0)" class="cursor-pointer bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 group">
                     <div class="relative h-80 overflow-hidden">
                         <img src="https://placehold.co/800x600/004755/FFFFFF?text=JOB+VACANCY+NEWS" onerror="this.onerror=null;this.src='https://placehold.co/800x600/004755/FFFFFF?text=News+Image';" alt="News" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
                         <div class="absolute top-4 left-4 bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded shadow">
@@ -450,10 +450,10 @@
                             Толығырақ оқу
                         </span>
                     </div>
-                </a>
+                </div>
 
                 <div class="flex flex-col space-y-6">
-                    <a href="#" class="flex bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition group h-28">
+                    <div onclick="openNewsModal(1)" class="cursor-pointer flex bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition group h-28">
                         <div class="w-1/3 overflow-hidden">
                             <img src="https://placehold.co/400x400/007f91/FFFFFF?text=Job+News" onerror="this.onerror=null;this.src='https://placehold.co/400x400/007f91/FFFFFF?text=News+Image';" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" alt="News">
                         </div>
@@ -466,8 +466,8 @@
                                 Педагогтерді конкурстық негізде жұмысқа қабылдау...
                             </p>
                         </div>
-                    </a>
-                    <a href="#" class="flex bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition group h-28">
+                    </div>
+                    <div onclick="openNewsModal(2)" class="cursor-pointer flex bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition group h-28">
                         <div class="w-1/3 overflow-hidden">
                             <img src="https://placehold.co/400x400/004755/FFFFFF?text=Health+Info" onerror="this.onerror=null;this.src='https://placehold.co/400x400/004755/FFFFFF?text=News+Image';" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500" alt="News">
                         </div>
@@ -480,11 +480,28 @@
                                 Маусымдық аурулардың белсенді кезеңінде мектебімізде санитарлық-гигиеналық талаптар күшейтілді...
                             </p>
                         </div>
-                    </a>
+                    </div>
                     <div class="text-center mt-6">
                         <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-emerald-800 transition shadow-lg">
                             <i class="fas fa-th-list mr-3"></i> Барлық жаңалықтар
                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Modal -->
+            <div id="newsModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);">
+                <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+                    <button onclick="closeNewsModal()" class="absolute top-4 right-4 w-10 h-10 bg-gray-100 hover:bg-red-100 rounded-full flex items-center justify-center text-gray-500 hover:text-red-500 transition z-10">
+                        <i class="fas fa-times text-lg"></i>
+                    </button>
+                    <div id="newsModalImage" class="w-full h-64 bg-emerald-900 rounded-t-2xl overflow-hidden">
+                        <img id="newsModalImg" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <div id="newsModalDate" class="text-sm text-gold-500 font-bold mb-2"></div>
+                        <h3 id="newsModalTitle" class="font-serif font-bold text-2xl text-emerald-900 mb-4"></h3>
+                        <div id="newsModalBody" class="text-gray-600 leading-relaxed space-y-3"></div>
                     </div>
                 </div>
             </div>
@@ -1102,6 +1119,75 @@
             } else {
                 vetPrev.classList.add('hidden');
             }
+        });
+    </script>
+
+    <script>
+        const newsData = [
+            {
+                date: '01 Желтоқсан, 2025',
+                title: 'БОС ПЕДАГОГ ЛАУАЗЫМЫНА КОНКУРСЫ ТУРАЛЫ ХАБАРЛАНДЫРУ',
+                image: 'https://placehold.co/800x600/004755/FFFFFF?text=JOB+VACANCY+NEWS',
+                body: `<p>«Дінмұхамед Қонаев атындағы жалпы білім беретін орта мектеп-гимназиясы» КММ – сінде педагогтерді конкурстық негізде жұмысқа қабылдау «Мемлекеттік білім беру ұйымдарының бірінші басшылары мен педагогтерін лауазымға тағайындау қағидалары» негізінде жүзеге асырылады.</p>
+                <p>Конкурсқа қатысу үшін қажетті құжаттар:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Өтініш</li>
+                    <li>Түйіндеме (резюме)</li>
+                    <li>Білімі туралы құжаттың көшірмесі</li>
+                    <li>Еңбек кітапшасының көшірмесі</li>
+                    <li>Жеке куәліктің көшірмесі</li>
+                </ul>
+                <p>Құжаттарды қабылдау мерзімі: хабарландыру жарияланған күннен бастап 15 жұмыс күні ішінде.</p>`
+            },
+            {
+                date: '28 Қараша, 2025',
+                title: 'БОС ПЕДАГОГ ЛАУАЗЫМЫНА КОНКУРСЫ ТУРАЛЫ ХАБАРЛАНДЫРУ',
+                image: 'https://placehold.co/800x600/007f91/FFFFFF?text=Job+News',
+                body: `<p>Педагогтерді конкурстық негізде жұмысқа қабылдау «Мемлекеттік білім беру ұйымдарының бірінші басшылары мен педагогтерін лауазымға тағайындау қағидалары» негізінде жүзеге асырылады.</p>
+                <p>Бос орындар туралы толық ақпаратты мектеп әкімшілігінен ала аласыздар.</p>
+                <p><strong>Байланыс телефоны:</strong> 8 (7132) 46-11-77</p>`
+            },
+            {
+                date: '21 Қараша, 2025',
+                title: 'Оқушылардың денсаулығын қорғау – біздің басты міндетіміз',
+                image: 'https://placehold.co/800x600/004755/FFFFFF?text=Health+Info',
+                body: `<p>Маусымдық аурулардың белсенді кезеңінде мектебімізде санитарлық-гигиеналық талаптар күшейтілді.</p>
+                <p>Жүргізілген шаралар:</p>
+                <ul class="list-disc pl-5 space-y-1">
+                    <li>Сыныптарды үнемі желдету және дезинфекциялау</li>
+                    <li>Оқушылардың денсаулық жағдайын күнделікті бақылау</li>
+                    <li>Медициналық қызметкерлердің кеңестері мен профилактикалық іс-шаралар</li>
+                    <li>Ата-аналарға ақпараттық хаттар тарату</li>
+                </ul>
+                <p>Балалардың денсаулығы – біздің басты құндылығымыз!</p>`
+            }
+        ];
+
+        function openNewsModal(index) {
+            const news = newsData[index];
+            const modal = document.getElementById('newsModal');
+            document.getElementById('newsModalImg').src = news.image;
+            document.getElementById('newsModalDate').innerHTML = '<i class="far fa-calendar-alt mr-1"></i> ' + news.date;
+            document.getElementById('newsModalTitle').textContent = news.title;
+            document.getElementById('newsModalBody').innerHTML = news.body;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNewsModal() {
+            const modal = document.getElementById('newsModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('newsModal').addEventListener('click', function(e) {
+            if (e.target === this) closeNewsModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeNewsModal();
         });
     </script>
 
