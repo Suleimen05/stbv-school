@@ -1,0 +1,96 @@
+
+jQuery(document).ready(function(){
+	jQuery(function(){	
+		if (jQuery('.header__video').is(':visible')) {
+			jQuery('.bg__img').css('opacity','0');
+		}
+	});
+	var city = jQuery("html").attr("city");
+	jQuery.ajax({
+			'url': '/temperature.php',
+			'data': {city: city},
+			'method': 'post',
+			success: function(msg) {
+				jQuery('.header__meteo__grad').html(msg);
+				console.log(parseInt(jQuery('.header__meteo__grad').text()));
+				if(parseInt(jQuery('.header__meteo__grad').text()) <= '-25') {
+					jQuery('.header__meteo img').attr("src", "/templates/school-theme/img/temp_red.png");
+				}
+				else {
+					jQuery('.header__meteo img').attr("src", "/templates/school-theme/img/temp_default.png");
+				}
+				
+			}
+	})
+	setInterval(function() {
+		jQuery.ajax({
+			'url': '/temperature.php',
+			'data': {city: city},
+			'method': 'post',
+			success: function(msg) {
+				jQuery('.header__meteo__grad').html(msg);
+				if(parseInt(jQuery('.header__meteo__grad').text()) <= '-25') {
+					jQuery('.header__meteo img').attr("src", "/templates/school-themeimg/temp_red.png");
+				}
+				else {
+					jQuery('.header__meteo img').attr("src", "/templates/school-theme/img/temp_default.png");
+				}
+			}
+		})
+	}, 180000);
+
+	jQuery(function(){
+		jQuery('.side__nav').each(function() {
+			jQuery("ul.nav-child:first").addClass("one");
+			jQuery(this).find("li").hover(
+				function() {
+					jQuery(this).addClass("active");
+					jQuery(this).find("ul.nav-child.unstyled.small:first").stop(true,false).fadeIn(200);
+				}, function() {
+					jQuery(this).removeClass("active");
+					jQuery(this).find("ul.nav-child.unstyled.small:first").stop(true,false).fadeOut(200);
+				});
+		});
+	});
+	jQuery('ul.news__list').find("li:first-child").detach();
+	jQuery('.pagination ul li').each(function(){
+		jQuery(this).find('a').removeClass('hasTooltip');
+	})
+	jQuery('.jg_row').each(function(){
+		jQuery(this).find('.jg_topelem_photo a').prepend("<div class='info_img'></div>");
+		jQuery(this).find('.jg_element_cat a').prepend("<div class='info_img'></div>");
+	})	
+	window.onload = function(){
+		
+			jQuery('.question__elem').each(function(){
+			var source = jQuery(this).find('.question__source').height();
+			jQuery(this).find('.question__btn').height(source);
+		})
+	}
+	jQuery(function(){
+		jQuery('.nav-menu').each(function() {
+			jQuery("ul.nav-child:first").addClass("one");
+			jQuery(this).find("li").hover(
+				function() {
+					jQuery(this).addClass("active");
+					jQuery(this).find("ul.nav-child.unstyled.small:first").stop(true,false).fadeIn(200);
+				}, function() {
+					jQuery(this).removeClass("active");
+					jQuery(this).find("ul.nav-child.unstyled.small:first").stop(true,false).fadeOut(200);
+				});
+		});
+	});
+
+	jQuery(function(){
+		if(jQuery('div').is('.bg__img') == false && jQuery('.nav-header').is(':visible') && jQuery('.soc__mid').is(':visible')){
+			jQuery('.h__bot--side').css('top', '0px');
+		} else if(jQuery('div').is('.bg__img') == false && jQuery('div').is('.nav-header') == false && jQuery('.soc__mid').is(':visible')){
+			jQuery('.h__bot--side').css('bottom', '0px');
+		} else if(jQuery('div').is('.bg__img') == false && jQuery('.nav-header').is(':visible') && jQuery('div').is('.soc__mid')  == false){
+			jQuery('.h__bot--side').css('bottom', '0px');
+		} else if (jQuery('div').is('.bg__img') == false && jQuery('div').is('.nav-header') == false && jQuery('div').is('.soc__mid')  == false){
+			jQuery('.header__bottom').detach();
+			jQuery('.header__search').css('margin', '20px 0 60px 0');
+		}
+	});
+})
